@@ -1,0 +1,7 @@
+# Unrequired folders (I think)
+Source/Library/Artifacts/
+Source/Logs/
+Source/obj
+
+# Files over 100 MB
+Source/Library/ArtifactDB
