@@ -6,6 +6,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 {
     public class Cabinet : MonoBehaviour
     {
+        public bool Avaliable => Physics.OverlapSphere(transform.position, activationRadius).Any(x => x.transform == p.transform);
+
         public float activationRadius;
         public float camMovementSpeed;
         public Transform camSetting;
@@ -20,8 +22,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
         private void Awake() => p = FindObjectOfType<Player>();
         private void Update()
         {
-            bool avaliable = Physics.OverlapSphere(transform.position, activationRadius).Any(x => x.transform == p.transform);
-            if (activated == false) activated = avaliable && GameManager.Submit;
+            if (activated == false) activated = Avaliable && GameManager.Submit;
 
             if (activated)
             {

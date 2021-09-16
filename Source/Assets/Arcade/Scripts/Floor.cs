@@ -12,13 +12,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 
         private float glowTimer;
 
-        private void Awake()
-        {
-            onGlowMatChange += ColorChange;
-            glowMat.EnableKeyword("_EmissiveColor");
-            glowMat.EnableKeyword("_EmissiveColorLDR");
-            glowMat.EnableKeyword("_EmissiveIntensity");
-        }
+        private void Awake() => onGlowMatChange += ColorChange;
 
         private void Update()
         {

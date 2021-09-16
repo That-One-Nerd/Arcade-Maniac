@@ -1568,7 +1568,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!224 &477174009
 RectTransform:
@@ -1652,7 +1652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654057667}
   m_LocalRotation: {x: 0, y: 0.7475083, z: 0.6642525, w: 0}
-  m_LocalPosition: {x: 0, y: -0.979, z: 3.021}
+  m_LocalPosition: {x: 0, y: -0.969, z: 3.103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1792768454}
@@ -2101,6 +2101,20 @@ MonoBehaviour:
   maxCamTimer: 2
   sceneName: EMD Level 1-1
   transitionImage: {fileID: 0}
+--- !u!64 &1792768457
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792768455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1053093794917909690, guid: da5130364f2aa1141adf5c617dc2a554, type: 3}
 --- !u!1 &1854512092 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -205057496309321417, guid: 6430949dc510fb44babb3c4e1db110ec, type: 3}
@@ -2345,24 +2359,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1119117574303022788, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
-      propertyPath: clearColorMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119117574303022788, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
-      propertyPath: backgroundColorHDR.b
-      value: 0.08627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119117574303022788, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
-      propertyPath: backgroundColorHDR.g
-      value: 0.03137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119117574303022788, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
-      propertyPath: backgroundColorHDR.r
-      value: 0.03137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 1119117574303022789, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
-      propertyPath: m_LocalRotation.w
+    - target: {fileID: 464351059956749616, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1119117574628588303, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
@@ -2416,6 +2414,30 @@ PrefabInstance:
     - target: {fileID: 1119117574628588307, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157110167308790422, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277186458955717795, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: fullscreenPassthrough
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277186458955717795, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: customRenderingSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277186458955717795, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: physicalParameters.m_Curvature.x
+      value: 10.743976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277186458955717795, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: physicalParameters.m_Curvature.y
+      value: 26.343374
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189800531643361099, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4562ee4b009bd3b40b020a2a4b10a245, type: 3}

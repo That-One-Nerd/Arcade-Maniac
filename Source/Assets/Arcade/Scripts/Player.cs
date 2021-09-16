@@ -39,7 +39,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
                 bounceCombine = PhysicMaterialCombine.Maximum,
                 bounciness = 0,
                 dynamicFriction = 0,
-                frictionCombine = PhysicMaterialCombine.Average,
+                frictionCombine = PhysicMaterialCombine.Minimum,
                 staticFriction = 0,
             };
         }
