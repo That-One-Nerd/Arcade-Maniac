@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Unity.Mathematics;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 {
@@ -14,7 +13,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
         public float groundLimit;
         public float jumpHeight;
         public float moveSpeed;
-        public float2 rotClamp;
+        public Vector2 rotClamp;
         public float rotSmoothFPS;
         public float rotSpeed;
 
@@ -22,8 +21,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 
         private CapsuleCollider col;
         private Rigidbody rb;
-        private float2 rot;
-        private float2 rotDes;
+        private Vector2 rot;
+        private Vector2 rotDes;
 
         private void Awake()
         {
@@ -31,7 +30,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
             col = GetComponent<CapsuleCollider>();
             rb = GetComponent<Rigidbody>();
 
-            rot = new float2(transform.eulerAngles.y, cam.transform.localEulerAngles.x);
+            rot = new Vector2(transform.eulerAngles.y, cam.transform.localEulerAngles.x);
             rotDes = rot;
 
             col.material = new PhysicMaterial("Player Physics Material")
@@ -55,8 +54,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 
         private void Movement()
         {
-            float2 dirs = new float2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            Quaternion rot = Quaternion.Euler(new float3 { y = transform.eulerAngles.y });
+            Vector2 dirs = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Quaternion rot = Quaternion.Euler(new Vector2 { y = transform.eulerAngles.y });
 
             rb.AddForce(rot * (moveSpeed * Time.deltaTime * (Vector3.forward * dirs.y + Vector3.right * dirs.x).normalized), ForceMode.Impulse);
 
@@ -65,14 +64,14 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 
         private void Rotation()
         {
-            float2 dirs = new float2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            Vector2 dirs = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
             rotDes += dirs;
             rotDes.y = Mathf.Clamp(rotDes.y, rotClamp.y, rotClamp.x);
             if (Time.deltaTime >= 1 / rotSmoothFPS) rot = rotDes;
             else rot += (rotDes - rot) * Time.deltaTime * rotSpeed;
 
-            transform.eulerAngles = new float3 { y = rot.x };
-            cam.transform.localEulerAngles = new float3 { x = -rot.y };
+            transform.eulerAngles = new Vector3 { y = rot.x };
+            cam.transform.localEulerAngles = new Vector3 { x = -rot.y };
         }
     }
 }

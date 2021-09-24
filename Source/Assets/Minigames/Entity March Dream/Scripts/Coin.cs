@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -10,7 +9,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private Collider2D col;
         private Player p;
-        private float3 startPos;
+        private Vector2 startPos;
         private float timer;
 
         private void Awake()
@@ -24,11 +23,11 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         {
             timer += Time.deltaTime * bobSpeed;
 
-            transform.position = startPos + new float3(0, Mathf.Sin(timer) * bobIntensity, 0);
+            transform.position = startPos + new Vector2(0, Mathf.Sin(timer) * bobIntensity);
 
             if (col.IsTouching(p.col))
             {
-                p.coinsCollected++;
+                Manager.coinsCollected++;
                 Destroy(gameObject);
             }
         }

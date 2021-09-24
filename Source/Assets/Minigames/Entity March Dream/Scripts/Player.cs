@@ -1,5 +1,4 @@
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -7,8 +6,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
     public class Player : MonoBehaviour
     {
         public bool IsGrounded => Physics2D.OverlapBoxAll(
-            new float2(col.bounds.center.x, col.bounds.min.y - (maxGroundDist / 2)),
-            new float2(col.bounds.extents.x, maxGroundDist), 0).Any(x => x.CompareTag(groundTag));
+            new Vector2(col.bounds.center.x, col.bounds.min.y - (maxGroundDist / 2)),
+            new Vector2(col.bounds.extents.x, maxGroundDist), 0).Any(x => x.CompareTag(groundTag));
 
         public float animSpeed;
         public string groundTag;
@@ -16,11 +15,10 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         public float maxGroundDist;
         public float speed;
 
-        internal float coinsCollected;
         internal Collider2D col;
+        internal Rigidbody2D rb;
 
         private Animator anim;
-        private Rigidbody2D rb;
         private SpriteRenderer sr;
 
         private void Awake()
@@ -46,7 +44,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Movement()
         {
-            float2 velocity = rb.velocity;
+            Vector2 velocity = rb.velocity;
 
             velocity.x = Input.GetAxisRaw("Horizontal") * speed;
 
@@ -60,7 +58,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             sr.flipX = rb.velocity.x <= 0 && (rb.velocity.x < 0 || sr.flipX);
 
             const float dividend = 10;
-            float2 rounded = new float2(Mathf.Round(rb.velocity.x * dividend), Mathf.Round(rb.velocity.y * dividend)) / dividend;
+            Vector2 rounded = new Vector2(Mathf.Round(rb.velocity.x * dividend), Mathf.Round(rb.velocity.y * dividend)) / dividend;
 
             anim.SetInteger("Mode", IsGrounded ? rounded.x == 0 ? 0 : 1 : rounded.y > 0 ? 2 : 3);
             anim.SetFloat("Speed", Mathf.Abs(rounded.x * animSpeed));
@@ -73,6 +71,11 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             offset.x = 0.0625f * (sr.flipX ? -1 : 1);
 
             col.offset = offset;
+        }
+
+        public void Die()
+        {
+
         }
     }
 }

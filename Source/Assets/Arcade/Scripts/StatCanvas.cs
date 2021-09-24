@@ -29,6 +29,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
         {
             foreach (GameObject child in children)
             {
+
 #pragma warning disable UNT0018
                 MethodInfo method = childMethods.FirstOrDefault(x => x.Name == "Child" + child.name.Combine());
                 // Since I really only run the method calculations in the `Awake()` method, using "MethodInfo" here

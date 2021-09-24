@@ -1,27 +1,29 @@
 # Devlogs
-## 9/16/2021 (21ga0916.0)
+## 9/24/2021 (21ga0924.0)
 
-Hi! 2 devlogs down, many more to go!
+### 0.
+Ok so I was pretty unproductive this week. Sorry about that! Hopefully I'll be more productive next devlog.
 
-### 0
-I did a good amount this week. I am done for the most part with the arcade exterior for now. I will definitely come back to it later, as it is nowhere near finished, but now I am working on the minigames. But, let's get into summarizing the changelog.
+### 1.
+I made the camera actually work this devlog. I tried a new approach, instead of the other tricks where the camera would just try and position the player in the center at all times. This one only moves when you hit a certain part of the camera, which I've made easy to change, as it is just attached to a collider.
 
-### 1
-I decided to do the thing I wanted and fix the arcade screen to use a `4:3` ratio, so images are now way easier to create. Since that happened, I also had to re-uv map the arcade, which meant I had to fix the broken textures. But, that wasn't hard because they were super basic anyways. I also decided to have a canvas on a second monitor for showing statistics. It is unrequired, and right now does literally nothing, but I'll work on that more some other time. I also imported TextMeshPro because I wanted text with different colors in it. I also figured out how to add custom HDRP assets to the camera, so I did that and reset the default ones. The player also had some weird stuff happening with the floor, so I removed all friction, and now it works fine.
+### 2.
+I've also tried making some clouds. In order to do that, I made my own object pool manager which I am pretty happy with. The only real issue I have with it is that when you switch pool transforms it doesn't move the old items in it (yet), so I'll add that at some point. For now though and probably not ever in this game, I won't have to do that, so I don't have any real pressure to make it. Back to the topic of clouds, though, my system is more of spawning clumps of white circles that size up and down that despawn when they leave the school. To be honest, I could probably write that into a particle system, but I've never done any work with particle systems. I will start working with them at some point this game, but until I get at least decent with them, I don't want to try and turn the clouds into one. So, that will wait.
 
-### 2
-Now comes the real nice part, where I start my first minigame. I started on EMD - AE (Entity March Dream - Arcade Edition), and I got a bit done. I started with some outlines for a tilemap which I will use, but didn't do much. I then textured some player sprites. I am using the same design as used in SASR (SneakAndSeek Remastered), TOT (Trick Or Treat), and RB (Rebuild). I also made a script to control their movement, animation, and collision. I took the approach of seperating each topic into it's own method and calling them all during the `Update()` method.
+### 3.
+Man, Unity is stupid when it comes to rebuilding the assembly. It does that pretty much anytime I add/rename/delete a script anywhere in the Assets folder. I wouldn't mind it that much except for some reason somewhere in the assembly rebuilding, it doesn't include the global suppressions I've made, so I have to add them again. And it also kind of alternates between rebuilding in .Net 5.0 and .Net 4.0, which gets really annoying because in either case, Unity's compiler still is using .Net 4.0, and so the things .Net 5.0 wants me to do cannot be done, with the biggest and most annoying one is the whole `new()` thing. I would use it, except .Net 4.0 doesn't allow it. But it is recommended to do it in .Net 5.0, which means that the whole time, Visual Studio is telling me to use `new()`, and when I do, Unity tells me I can't. I am also the kind of guy who doesn't like any messages of any kind, whether they are errors, warnings, or messages. So I get annoyed the whole time I code when it's built like that. And I know I can only suppress it until I mess with the files, which is guarenteed to happen. Anyways, that's my rant on Unity rebuilding the assembly.
 
-### 3
-I have also made some textures for the grass. I think it looks very good. Note: the outline in the stone textures are sharper on purpose. It is to depict a stronger object. I have not finished the stone textures yet, but I will soon, possibly in the next stream. I also had an idea to get the textures for this game from another game which textures I really likes, but the developer said no, which is fair, and so I made my own, which I like just as much.
-
-### 4
-I also made a coin.
+### 4.
+Lastly, I'm working on a few things, the player death code, damage code, and spikes. All of which are pretty connected. Oh, also I made the stone textures finally. Let me know how you feel about them. I was iffy about them when I made them, but I like them now.
 
 ### Ending
-So that's about it! I hope you liked the progress coming along. It is a bit slowed due to school, but luckily I've managed to stay on track at school so far (unlike last year :sade:), and I think I can keep it up, so development will be slowed slightly, but not as much as it would be if I wasn't on track. Anyways, have a good one!
+There it is! Again, sorry for not being super productive, but I think I'll be able to get back into it over the weekend. Also, I will be streaming this weekend, just to let you guys know!
 
-P.S. Currently updating Unity to `2021.1.21f1` while writing this. Man, unity updates weekly I swear it is a little bit annoying lmao.
+P.S. I forgot to set the internal Unity build version to `21ga0924.0`, so it still says `21ga0916.0`. Not sure if you even knew I changed it, but I did. I'll try to remember next time, although to be frankly honest, it's easy to forget, and it doesn't do anything, so I might just not do it. We'll see.
+
+Anyways, have a good day!
+
+\- Nerd
 
 ### Stuff to Do:
 - I have to make the arcade cabinet account for framerate like the player controller does when it angles the camera towards itself.
@@ -30,55 +32,35 @@ P.S. Currently updating Unity to `2021.1.21f1` while writing this. Man, unity up
 - ~~Remodel the cabinet screen to use a well-known aspect ratio~~
 - Add more details to cabinet
 - Fix the camera acting weird when the player interacts with the cabinet by pressing "Space"
-- Add stone textures to EMD
+- ~~Add stone textures to EMD~~
 - Obviously more.
 
 ### Complete changelog:
 | Date | Change |
 | - | - |
-| 9/10/2021 | Removed some useless code in `Source/Assets/Arcade/Scripts/Floor.cs` |
-| 9/10/2021 | Upgraded to `Unity 2021.1.20f1` |
-| 9/11/2021 | Changed the screen in the arcade cabinet to be a `4:3` size ration |
-| 9/11/2021 | Re-unwrapped the arcade cabinet model |
-| 9/11/2021 | Fixed all broken arcade textures |
-| 9/11/2021 | Added a canvas for displaying statistics to the player in the `Source/Assets/Arcade/Scenes/Arcade.unity`. This canvas renders to the second screen. |
-| 9/11/2021 | Added a camera to the stat canvas for rendering. This camera has no audio listener |
-| 9/11/2021 | Imported essentials for TextMeshPro |
-| 9/11/2021 | Added the name of the game to the stat canvas (as a TMP) |
-| 9/11/2021 | Added script to control stat canvas (`Source/Assets/Arcade/Scripts/StatCanvas.cs`) |
-| 9/11/2021 | Added editorconfig file so VS 2019 would stop yelling at me for "Private member 'Update' is unused" |
-| 9/11/2021 | Added a folder for script extensions in `Source/Assets/Misc/Scripts` |
-| 9/11/2021 | Added a script extension to combine words together (Ex: `this is a test` => `ThisIsATest`) (`Source/Assets/Misc/Scripts/Extensions/CombineExtension.cs`) |
-| 9/11/2021 | Added a folder for object models in `Source/Assets/Misc/Scripts` |
-| 9/11/2021 | Added an object model for tracking stats (`Source/Assets/Misc/Scripts/Object Models/Statistics.cs`)
-| 9/11/2021 | Added text to tell you how far you are into the game in the stat canvas |
-| 9/11/2021 | Modified the editorconfig of VS so it would stop telling me to use `new()` over `new object()` (because that doesn't work in .Net 4.0, which Unity uses) |
-| 9/12/2021 | Added a folder to contain a bunch of different roboto fonts in `Source/Assets/Misc/Fonts` |
-| 9/12/2021 | Added a folder to contain the righteous regular font and TMP asset `Source/Assets/Misc/Fonts` |
-| 9/12/2021 | Mofified the cabinet script to allow any outside script with the instance to detect if that arcade is active |
-| 9/12/2021 | Added a folder for custom HDRP settings in `Source/Assets/Arcade` |
-| 9/12/2021 | Added custom HDRP settings for the Arcade only in `Source/Assets/Arcade/HDRP` |
-| 9/12/2021 | Modified the arcade player script to lower friction with the arcade mesh (edited `Source/Assets/Arcade/Scripts/Player.cs`) |
-| 9/12/2021 | Added a new scene as a EMD test scene (`Source/Assets/Minigames/Entity March Dream/Scenes/Testing Game.unity`) |
-| 9/12/2021 | Made outlines for some grass textures (the main textures for maps). They don't look like much, but they work for now (`Source/Assets/Minigames/Entity March Dream/Textures/Grass-Tiles.png`) |
-| 9/12/2021 | Sliced `Source/Assets/Minigames/Entity March Dream/Textures/Grass-Tiles.png` into 40 8x8 tiles and named them and shaped their colliders accordingly |
-| 9/12/2021 | Created a folder in `Source/Assets/Minigames/Entity March Dream` to store tile palette data, and a folder within it dedicated to tile palette assets |
-| 9/12/2021 | Created a new tile palette named `EMD-Tilemap` dedicated to the textures for EMD and saved in `Source/Assets/Minigames/Entity March Dream/Palettes` |
-| 9/12/2021 | Imported the grass textures into the palette and saved the assets in `Source/Assets/Minigames/Entity March Dream/Palettes/Assets` |
-| 9/12/2021 | Added 3 tilemaps in a grid, layer 0 (background), layer 1 (main), and layer 2 (foreground) |
-| 9/12/2021 | Textured some rock outline sprites, (rock textures are going to be decoration textures) (`Source/Assets/Minigames/Entity March Dream/Textures/Stone-Tiles.png`) |
-| 9/12/2021 | Sliced `Source/Assets/Minigames/Entity March Dream/Textures/Stone-Tiles.png` into 40 8x8 tiles and named them and shaped their colliders accordingly |
-| 9/12/2021 | Imported the stone textures into `EMD-Tilemap` palette and saved the assets in `Source/Assets/Minigames/Entity March Dream/Palettes/Assets` |
-| 9/12/2021 | Designed a player for EMD based on the design in `TrickOrTreat`, `Rebuild`, and `SneakAndSeek Remastered` (`Source/Assets/Minigames/Entity March Dream/Textures/Player.png`) |
-| 9/13/2021 | Split the player texture into 4 sprites to be used as animations (9x11) |
-| 9/13/2021 | Created a script to control the player in EMD (`Source/Assets/Minigames/Entity March Dream/Scripts/Player.cs`) |
-| 9/13/2021 | Created a folder to store prefabs in `Source/Assets/Minigames/Entity March Dream` |
-| 9/13/2021 | Created a player object (saved in `Source/Assets/Minigames/Entity March Dream/Prefabs`) |
-| 9/14/2021 | Added a custom tag representing the ground named "EMD Ground." Layer 1 (main) is given this tag |
-| 9/16/2021 | Created a folder to store animations in `Source/Assets/Minigames/Entity March Dream` and a folder in that for the Player |
-| 9/16/2021 | Created animations for the player standing still, walking, jumping, and falling (`Source/Assets/Minigames/Entity March Dream/Animations/Player/*.anim`) |
-| 9/16/2021 | Gave the player a prefab in `Source/Assets/Minigames/Entity March Dream/Prefabs` |
-| 9/16/2021 | Added a coin texture (`Source/Assets/Minigames/Entity March Dream/Textures/coin.png`) |
-| 9/16/2021 | Added a script for managing the coin (`Source/Assets/Minigames/Entity March Dream/Scripts/Coin.cs`) |
-| 9/16/2021 | Added a coin object and made it a prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Coin.prefab`) |
-| 9/16/2021 | Added actual design to the grass textures for EMD |
+| 9/17/2021 | Upgraded to Unity `2021.1.21f1` |
+| 9/18/2021 | Set the player's render layer to `50` to render above the main tilemap layer and below the foreground tilemap layer |
+| 9/18/2021 | Lowered the player's hitbox by a quarter of a pixel to allow them to walk through one-block gaps |
+| 9/18/2021 | Made the camera a prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Camera.prefab`) |
+| 9/18/2021 | Created a script to manage the Camera (`Source/Assets/Minigames/Entity March Dream/Scripts/PlayerCamera.cs`) |
+| 9/18/2021 | Added a global suppression file to supress `IDE0090` (can't use `new()` in .Net 4.0) |
+| 9/18/2021 | Added a collider trigger to the camera to act as a box which the player touches to move the camera |
+| 9/18/2021 | Raised player jump height to `12.5` |
+| 9/18/2021 | Created a white circle for the clouds (`Source/Assets/Minigames/Entity March Dream/Textures/Cloud.png`) |
+| 9/18/2021 | Created an empty cloud object and turned it into a prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Clouds.prefab`) |
+| 9/18/2021 | Created a script to manage the clouds (`Source/Assets/Minigames/Entity March Dream/Scripts/Clouds.cs`) |
+| 9/18/2021 | Created another supression file for `IDE0090` |
+| 9/18/2021 | Created an object pool handler script in `Source/Assets/Misc/Scripts/Handlers/PoolHandler.cs` |
+| 9/18/2021 | Gave the cloud prefab an object pool, with each object containing a sprite renderer with the cloud texture and a render layer of `-1000` |
+| 9/18/2021 | Created a script to manage each piece of cloud in `Source/Assets/Minigames/Entity March Dream/Scripts/CloudPiece.cs` |
+| 9/18/2021 | Replaced all requirements of `Unity.Mathematics` and removed said namespace |
+| 9/18/2021 | Renamed the 3 tilemap layers to "Background," "Collision," and "Foreground" respectively. |
+| 9/21/2021 | Created a script to manage EMD in `Source/Assets/Minigames/Entity March Dream/Scripts/Manager.cs` |
+| 9/21/2021 | Changed the player and coin scripts to instead count the coins in the manager script |
+| 9/21/2021 | Added a spike texture to the game (`Source/Assets/Minigames/Entity March Dream/Textures/Spikes.png`) |
+| 9/23/2021 | Upgraded to Unity `2021.1.22f1` |
+| 9/23/2021 | Retextured the EMD stone textures (`Source/Assets/Minigames/Entity March Dream/Textures/Stone-Tiles.png`) |
+| 9/24/2021 | Added a `PlayerHealth` variable, a `p_playerHealth` private variable, and a `player` reference to the Player to the `Statistics` object model |
+| 9/24/2021 | Removed redundancy in `Source/Assets/Misc/Scripts/Handlers/PoolHandler.cs` on line 70 |
+| 9/24/2021 | Removed null coalescing in the PoolHandler script on line 27. I would have kept it except Unity didn't like it for some reason |
+| 9/24/2021 | Created a `Die()` method in `Source/Assets/Minigames/Entity March Dream/Scripts/Player.cs` |
