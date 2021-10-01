@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -25,9 +26,9 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
             transform.position = startPos + new Vector2(0, Mathf.Sin(timer) * bobIntensity);
 
-            if (col.IsTouching(p.col))
+            if (p.col != null && col.IsTouching(p.col))
             {
-                Manager.coinsCollected++;
+                Statistics.instance.coinsCollected++;
                 Destroy(gameObject);
             }
         }

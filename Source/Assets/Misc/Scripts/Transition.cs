@@ -75,7 +75,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc
 
             Transitioning = false;
             yield return null;
-        }
+        }        
         private IEnumerator IInstantTransition(string sceneName, float delay)
         {
             Transitioning = true;

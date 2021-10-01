@@ -147,8 +147,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animSpeed: 0.35
+  deathDrag: 0.675
+  deathFloor: -5
+  fallSpeed: 20
+  gravityScale: 1
   groundTag: EMD Ground
+  invulFlashMode: 1
+  invulFlashSpeed: 10
+  invulTime: 3
   jumpHeight: 12.5
+  jumpHeightDeath: 7.5
   maxGroundDist: 0.25
   speed: 5
 --- !u!95 &3474478887881229042

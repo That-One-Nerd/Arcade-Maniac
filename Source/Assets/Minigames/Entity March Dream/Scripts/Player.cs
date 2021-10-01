@@ -1,28 +1,42 @@
 using System.Linq;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Misc;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 {
     public class Player : MonoBehaviour
     {
-        public bool IsGrounded => Physics2D.OverlapBoxAll(
+        public bool IsGrounded => col != null && Physics2D.OverlapBoxAll(
             new Vector2(col.bounds.center.x, col.bounds.min.y - (maxGroundDist / 2)),
             new Vector2(col.bounds.extents.x, maxGroundDist), 0).Any(x => x.CompareTag(groundTag));
 
         public float animSpeed;
+        public float deathDrag;
+        public float deathFloor;
+        public float fallSpeed;
+        public float gravityScale;
         public string groundTag;
+        public InvulFlashMode invulFlashMode;
+        public float invulFlashSpeed;
+        public float invulTime;
         public float jumpHeight;
+        public float jumpHeightDeath;
         public float maxGroundDist;
         public float speed;
 
         internal Collider2D col;
         internal Rigidbody2D rb;
 
+        private bool alive;
         private Animator anim;
         private SpriteRenderer sr;
 
         private void Awake()
         {
+            alive = true;
+
             anim = GetComponent<Animator>();
             col = GetComponent<Collider2D>();
             rb = GetComponent<Rigidbody2D>();
@@ -37,9 +51,25 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
-            Movement();
+            if (alive)
+            {
+                Movement();
+                Collision();
+            }
             Animation();
-            Collision();
+
+            if (rb.velocity.y < 0) rb.velocity += Vector2.down * Mathf.Abs(fallSpeed * Time.deltaTime);
+
+            if (!sr.isVisible) rb.velocity = Vector2.zero;
+            if (transform.position.y < deathFloor) Die();
+
+            if (Statistics.instance.playerInvul.HasValue) 
+                Statistics.instance.playerInvul =
+                    Statistics.instance.playerInvul <= 0 ? null
+                    : Statistics.instance.playerInvul - Time.deltaTime;
+
+            float colorVal = Mathf.Cos(alive ? (Statistics.instance.playerInvul ?? 0) * invulFlashSpeed : Mathf.PI) / 4 + 0.75f;
+            sr.color = invulFlashMode == InvulFlashMode.Transparent ? new Color(1, 1, 1, colorVal) : new Color(1, colorVal, colorVal, 1);
         }
 
         private void Movement()
@@ -75,7 +105,20 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         public void Die()
         {
+            if (!alive) return;
+            alive = false;
+            Statistics.instance.PlayerHealth = 0;
+            rb.drag = deathDrag;
+            rb.velocity = new Vector2(rb.velocity.x, jumpHeightDeath);
+            Destroy(col);
 
+            Transition.Instance.InstantTransition(SceneManager.GetActiveScene().name, 2.5f);
+        }
+
+        public enum InvulFlashMode
+        {
+            Transparent,
+            Red,
         }
     }
 }

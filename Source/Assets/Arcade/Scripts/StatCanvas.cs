@@ -29,7 +29,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
         {
             foreach (GameObject child in children)
             {
-
 #pragma warning disable UNT0018
                 MethodInfo method = childMethods.FirstOrDefault(x => x.Name == "Child" + child.name.Combine());
                 // Since I really only run the method calculations in the `Awake()` method, using "MethodInfo" here
@@ -43,8 +42,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
         }
 
         public void ChildGamesCompleted(GameObject g) => g.GetComponent<Text>().text = "Completed Games: " +
-                                                             Statistics.instance.completedGames + " / " +
-                                                             Statistics.instance.requiredGames + " (" +
-                                                             Statistics.instance.CompletedPercent.ToString("0.00") + "%)";
+                                                             GeneralStats.instance.completedGames + " / " +
+                                                             GeneralStats.instance.requiredGames + " (" +
+                                                             GeneralStats.instance.CompletedPercent.ToString("0.00") + "%)";
     }
 }
