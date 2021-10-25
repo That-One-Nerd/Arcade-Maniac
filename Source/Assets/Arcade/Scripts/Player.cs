@@ -1,4 +1,5 @@
 using System;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
@@ -67,8 +68,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
             Vector2 dirs = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
             rotDes += dirs;
             rotDes.y = Mathf.Clamp(rotDes.y, rotClamp.y, rotClamp.x);
-            if (Time.deltaTime >= 1 / rotSmoothFPS) rot = rotDes;
-            else rot += (rotDes - rot) * Time.deltaTime * rotSpeed;
+            rot = rot.Interpolate(rotDes, rotSpeed);
 
             transform.eulerAngles = new Vector3 { y = rot.x };
             cam.transform.localEulerAngles = new Vector3 { x = -rot.y };

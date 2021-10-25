@@ -1,4 +1,5 @@
 using System.Linq;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -26,6 +27,9 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
+            rb.simulated = !PauseMenu.IsPaused;
+            if (PauseMenu.IsPaused) return;
+
             col.size = sr.bounds.size;
 
             bool touching = PlayerTouching;
@@ -40,10 +44,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
                                                                                    // solution, but it'll do
             }
             else rb.velocity = Vector2.zero;
-
-            /* TODO:
-                - make the platform less glitchy
-            */
         }
     }
 }

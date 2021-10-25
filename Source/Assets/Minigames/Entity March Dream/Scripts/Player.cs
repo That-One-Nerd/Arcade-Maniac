@@ -1,4 +1,5 @@
 using System.Linq;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc;
 using UnityEngine;
@@ -26,11 +27,11 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         public float maxGroundDist;
         public float speed;
 
+        internal Animator anim;
         internal Collider2D col;
         internal Rigidbody2D rb;
 
         private bool alive;
-        private Animator anim;
         private SpriteRenderer sr;
 
         private void Awake()
@@ -51,6 +52,13 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
+            rb.simulated = !PauseMenu.IsPaused;
+            if (PauseMenu.IsPaused)
+            {
+                anim.SetFloat("Speed", 0);
+                return;
+            }
+
             if (alive)
             {
                 Movement();
@@ -63,12 +71,12 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             if (!sr.isVisible) rb.velocity = Vector2.zero;
             if (transform.position.y < deathFloor) Die();
 
-            if (Statistics.instance.playerInvul.HasValue) 
-                Statistics.instance.playerInvul =
-                    Statistics.instance.playerInvul <= 0 ? null
-                    : Statistics.instance.playerInvul - Time.deltaTime;
+            if (Statistics.Instance.playerInvul.HasValue) 
+                Statistics.Instance.playerInvul =
+                    Statistics.Instance.playerInvul <= 0 ? null
+                    : Statistics.Instance.playerInvul - Time.deltaTime;
 
-            float colorVal = Mathf.Cos(alive ? (Statistics.instance.playerInvul ?? 0) * invulFlashSpeed : Mathf.PI) / 4 + 0.75f;
+            float colorVal = Mathf.Cos(alive ? (Statistics.Instance.playerInvul ?? 0) * invulFlashSpeed : Mathf.PI) / 4 + 0.75f;
             sr.color = invulFlashMode == InvulFlashMode.Transparent ? new Color(1, 1, 1, colorVal) : new Color(1, colorVal, colorVal, 1);
         }
 
@@ -107,7 +115,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         {
             if (!alive) return;
             alive = false;
-            Statistics.instance.PlayerHealth = 0;
+            Statistics.Instance.PlayerHealth = 0;
             rb.drag = deathDrag;
             rb.velocity = new Vector2(rb.velocity.x, jumpHeightDeath);
             Destroy(col);

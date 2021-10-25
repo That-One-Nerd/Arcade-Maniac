@@ -29,11 +29,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunc
 
             anim.Play("Gain Health", -1, 1);
         }
-        public void Update()
-        {
-            slider.value += (Statistics.instance.PlayerHealth - slider.value) * Time.deltaTime * speed;
-            if (Input.GetKeyDown(KeyCode.Space)) Statistics.instance.PlayerHealth += 0.25f;
-        }
+        public void Update() => slider.value = slider.value.Interpolate(Statistics.Instance.PlayerHealth, speed);
 
         public void OnGainHealth() => anim.Play("Gain Health", -1, 0);
         public void OnLoseHealth() => this.Shake(loseHealthShake);

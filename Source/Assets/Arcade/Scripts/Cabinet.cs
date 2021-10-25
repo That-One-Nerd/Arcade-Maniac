@@ -1,5 +1,6 @@
 using System.Linq;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
@@ -34,7 +35,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
 
                 const float overAccount = 360;
                 Vector3 desRot = camSetting.eulerAngles + (Vector3.one * overAccount), rot = p.cam.transform.eulerAngles + (Vector3.one * overAccount);
-                rot += camMovementSpeed * Time.deltaTime * (desRot - rot);
+                rot = rot.Interpolate(desRot, camMovementSpeed);
                 p.cam.transform.eulerAngles = rot - (Vector3.one * overAccount);
 
                 if (camTimer >= maxCamTimer) Transition.Instance.ImageTransition(sceneName, 1);

@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Handlers;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
+            if (PauseMenu.IsPaused) return;
+
             if (timer >= desiredTimer)
             {
                 desiredTimer = Random.Range(2.5f, 5);

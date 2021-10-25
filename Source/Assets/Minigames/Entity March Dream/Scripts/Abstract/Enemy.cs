@@ -1,6 +1,7 @@
 using System.Linq;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.ObjectModels;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abstract
 {
@@ -8,21 +9,25 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abst
     {
         public float bounceHeight;
         public float bounceHeightExtra;
+        public Loot deathLoot;
 
         protected Collider2D col;
         protected Player p;
         protected Rigidbody2D rb;
-        protected Renderer ren;
-        protected TilemapCollider2D tilemap;
+        protected SpriteRenderer sr;
+
+        private float? oldGravityScale;
+        private Vector2? oldVelocity;
 
         protected virtual void Awake() => AssignVars();
 
         protected virtual void Update()
         {
-            rb.simulated = ren.isVisible;
-            if (ren.isVisible) Move();
+            rb.simulated = !PauseMenu.IsPaused;
+            if (PauseMenu.IsPaused) return;
 
-            if (Physics2D.OverlapBoxAll(col.bounds.center, col.bounds.size, 0).Any(x => x == p.col)) OnHitPlayer();
+            rb.simulated = sr.isVisible;
+            if (sr.isVisible) Move();
         }
 
         protected virtual void AssignVars()
@@ -30,8 +35,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abst
             col = GetComponent<Collider2D>();
             p = FindObjectOfType<Player>();
             rb = GetComponent<Rigidbody2D>();
-            ren = GetComponent<Renderer>();
-            tilemap = FindObjectsOfType<TilemapCollider2D>().FirstOrDefault(x => x.gameObject.name == "Collision");
+            sr = GetComponent<SpriteRenderer>();
 
             rb.sharedMaterial = new PhysicsMaterial2D("Enemy Physics Material")
             {
@@ -40,7 +44,11 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abst
             };
         }
 
-        protected abstract void Die();
+        protected virtual void Die()
+        {
+            if (deathLoot.Lottery) Instantiate(deathLoot.lootObject, transform.position, Quaternion.Euler(Vector3.zero));
+            Destroy(gameObject);
+        }
         protected abstract void OnHitPlayer();
         protected virtual void OnPlayerStomp()
         {

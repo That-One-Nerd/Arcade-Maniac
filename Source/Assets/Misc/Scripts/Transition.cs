@@ -49,7 +49,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc
             Speed = afterSpeed == -1 ? speed : afterSpeed;
 
             Transitioning = false;
-            yield return null;
         }
         private IEnumerator IImageTransition(string sceneName, float speed, Texture image, float startDelay, float afterSpeed, float afterDelay)
         {
@@ -74,7 +73,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc
             Speed = afterSpeed == -1 ? speed : afterSpeed;
 
             Transitioning = false;
-            yield return null;
         }        
         private IEnumerator IInstantTransition(string sceneName, float delay)
         {
@@ -85,7 +83,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc
             SceneManager.LoadScene(sceneName);
 
             Transitioning = false;
-            yield return null;
         }
     }
 }

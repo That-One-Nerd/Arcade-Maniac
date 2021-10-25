@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using UnityEngine;
 
@@ -22,13 +23,15 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
+            if (PauseMenu.IsPaused) return;
+
             timer += Time.deltaTime * bobSpeed;
 
             transform.position = startPos + new Vector2(0, Mathf.Sin(timer) * bobIntensity);
 
             if (p.col != null && col.IsTouching(p.col))
             {
-                Statistics.instance.coinsCollected++;
+                Statistics.Instance.CoinsCollected++;
                 Destroy(gameObject);
             }
         }

@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -27,6 +28,9 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         }
         private void Update()
         {
+            anim.speed = PauseMenu.IsPaused ? 0 : 1;
+            if (PauseMenu.IsPaused) return;
+
             if (spawnTimer != null)
             {
                 spawnTimer += Time.deltaTime;

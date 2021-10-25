@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -5,16 +6,18 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
     public class PlayerCamera : MonoBehaviour
     {
         private Collider2D col;
-        private Player p;
+        private GameObject p;
 
         private void Awake()
         {
             col = GetComponent<Collider2D>();
-            p = FindObjectOfType<Player>();
+            p = FindObjectOfType<Player>().gameObject;
         }
 
         private void Update()
         {
+            if (PauseMenu.IsPaused) return;
+
             Vector3 position = transform.position;
             Vector4 dist = new Vector4(
                 p.transform.position.x - col.bounds.min.x,

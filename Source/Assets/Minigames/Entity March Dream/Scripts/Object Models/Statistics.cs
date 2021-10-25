@@ -5,13 +5,15 @@ using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels
 {
-    public class Statistics
+    public class Statistics : MonoBehaviour
     {
-        public static Statistics instance = new Statistics();
+        public static Statistics Instance { get; private set; }
 
-        public Statistics()
+        private void Awake()
         {
-            canvas = Object.FindObjectsOfType<Canvas>().FirstOrDefault(x => x.name == "Game Interface");
+            Cursor.lockState = CursorLockMode.Locked;
+
+            canvas = FindObjectsOfType<Canvas>().FirstOrDefault(x => x.name == "Game Interface");
             canvasComponents = new Dictionary<GameObject, MonoBehaviour[]>();
             for (int i = 0; i < canvas.transform.childCount; i++)
             {
@@ -19,9 +21,25 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Obje
                 canvasComponents.Add(child, child.GetComponents<MonoBehaviour>());
             }
 
-            player = Object.FindObjectOfType<Player>();
+            player = FindObjectOfType<Player>();
+
+            Instance = this;
         }
 
+        public int CoinsCollected
+        {
+            get => p_CoinsCollected;
+            set
+            {
+                if (p_CoinsCollected == value) return;
+                CoinCounter counter = (CoinCounter)canvasComponents.FirstOrDefault(x => x.Key.name == "Coin Counter").Value
+                    .FirstOrDefault(x => x.GetType() == typeof(CoinCounter));
+
+                counter.OnCoinCollected();
+
+                p_CoinsCollected = value;
+            }
+        }
         public float PlayerHealth
         {
             get => p_PlayerHealth;
@@ -29,31 +47,32 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Obje
             {
                 value = Mathf.Clamp01(value);
                 if (p_PlayerHealth == value) return;
-                else
-                {
-                    HealthBar health = (HealthBar)canvasComponents.FirstOrDefault(x => x.Key.name == "Health").Value
+                HealthBar health = (HealthBar)canvasComponents.FirstOrDefault(x => x.Key.name == "Health").Value
                         .FirstOrDefault(x => x.GetType() == typeof(HealthBar));
 
-                    if (p_PlayerHealth > value)
-                    {
-                        if (playerInvul.HasValue) return;
-                        health.OnLoseHealth();
-                        if (value == 0) player.Die();
-                        else playerInvul = player.invulTime;
-                    }
-                    else health.OnGainHealth();
+                if (p_PlayerHealth > value)
+                {
+                    if (playerInvul.HasValue) return;
+                    health.OnLoseHealth();
+                    if (value == 0) player.Die();
+                    else playerInvul = player.invulTime;
                 }
+                else health.OnGainHealth();
 
                 p_PlayerHealth = value;
             }
         }
 
-        public Canvas canvas;
-        public Dictionary<GameObject, MonoBehaviour[]> canvasComponents;
-        public int coinsCollected;
-        public Player player;
-        public float? playerInvul;
+        internal Canvas canvas;
+        internal Dictionary<GameObject, MonoBehaviour[]> canvasComponents;
+        internal Player player;
+        internal float? playerInvul;
 
+        // these are strings in case you want to include special levels, like "Bonus/Miniboss"
+        public string world;
+        public string worldLevel;
+
+        private int p_CoinsCollected;
         private float p_PlayerHealth = 1;
     }
 }

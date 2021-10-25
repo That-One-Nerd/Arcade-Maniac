@@ -137,6 +137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceHeight: 7.5
   bounceHeightExtra: 10
+  deathLoot:
+    chance: 0.1
+    lootObject: {fileID: 101698082087712127, guid: ceb40b91b88e4e94eb383c5e3e9862c3, type: 3}
   damage: 0.25
   force: 2
   forceMode: 1

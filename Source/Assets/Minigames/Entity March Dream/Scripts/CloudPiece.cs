@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Handlers;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
+            if (PauseMenu.IsPaused) return;
+
             startedSeen += startedSeen == -1 ? 0 : Time.deltaTime;
             transform.position += new Vector3(Time.deltaTime, 0, 0);
             if (ren.isVisible) startedSeen = -1;

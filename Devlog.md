@@ -1,24 +1,33 @@
 # Devlogs
-## 10/15/2021 (21ga1015.0)
+## 10/24/2021 (21ga1024.0)
 
-4 down! (Would have been 5, but I missed last week)
+Devlog number 5 is ready!
 
 ### 0.
-Alright, so these past 2 weeks were very unproductive. I've just been distracted almost every day. I won't be able to stream this weekend, because I'll be going on a camping trip, but hopefully I'll be able to stream next weekend, and that will finally get me back into the mood. I've done some stuff here and there, but overall not very much. You can see where I just stopped, basically after the 7th.
+Ok, so this week was *almost* as unproductive as the past 2 weeks, but I managed to get a ton done over the weekend (mainly Saturday, actually).
 
 ### 1.
-The first thing I've done is changed the name of the ball enemy from `Rolling Enemy` to `Enemy Rolling`, just so all the enemies appear together alphabetically. I've also made that, along with the base abstract class, actually work. One thing to note is that so far, the rolling enemy doesn't have any speed cap. So that might be something I have to do. But for now, and for any bumpy and weird terrain, it works fine. The rolling enemy will disable its gravity to climb up slopes, because otherwise it can't. The enemy will also despawn when below the death barrier, and not move at all when off screen. This does leave room for seeing the enemy be a little weird when you move over to it after being off screen, but it works for now, and I don't have too much of any intention of changing it. If I would, I might just increase the bounds of the check (somehow, not sure yet). Lastly, the player will now bounce off the enemy when stomping it, higher if holding jump.
+First off, I had to update unity TWICE, because I installed `25f1`, updated to Windows 11, and in that time of like 45 minutes max, a new unity version came out, and I had to install that one too. So that happened.
 
-### 2. 
-Added a canvas for the game interface, and added a health bar. The bar has an animation for taking damage and gaining health. To be honest, I think working on the canvas is what burnt me out this week, but I'm not super sure.
+### 2.
+Ok, time for some actual stuff. I started by adding an extension to interpolate, because I use that function so many times, I could just package it all up into its own method. Also, that method I use actually doesn't work in low enough framerates (around 18 or lower, I calculated), so instead of making each instance of that function account for framerate too, I could just make a method to handle it. That was the main reason behind it.
 
 ### 3.
-It's extension time! I added an extension to any monobehavior to shake it's gameobject. I did that instead of making it monobehavior specific, because I'm definitely going to use the exact same shake method many times in Arcade Maniac (not just EMD). So, might as well make it easy to access in many places. That also saved me the burden of making an animation that shakes the health bar, because I already wanted to do that. Sometimes, coroutines are just better than animations. Speaking of which, for those of you who don't know what a coroutine is, it is basically Unity's way of making a function that can last several frames. You make one by making the return type of a method `System.Collections.IEnumerator`, and now anything before a `yield return <something, usually null. literally doesn't matter>;` statement will be executed in that frame. Every one of those statements is equivalent to waiting for the next frame. They do have to be called in a special way, though. You have to run `StartCoroutine(IEnumerator)` for it. Otherwise, it will run like a normal method. Anyways, that's coroutines for you.
+Then I made the coin counter and the world indicator, simple enough. The coin indicator actually has a tiny animation when you collect a coin, just because I thought that could be cool. And the backdrop really helped make the text readable. I might add another rectangular one that covers everything, but I don't know about that yet.
 
-### Ending.
-And you wanna know what? That's ***it***. In 2 weeks. That's all of it. As you can see, I was really unproductive this week. Hopefully I can make it up next week. I have a goal to get at least a changelog the size of this one or larger in the week. We'll see how it goes. I sure hope I can make that goal. Anyways, that's all. Have a nice week, you guys!
+### 4.
+I decided to turn the EMD stats file into a monobehavior, because that definitely will help me with the general scene stats, like the world and level names. I will eventually add a method in there to save data, but for now at least, it goes without saving. The issue with saving here is that because of the launcher holding many different versions of Arcade Maniac, and that I want save files to transfer seamlessly from one version to another, I will have to save outside of the regular persistant data path Unity gives me, which becomes more of an issue when we talk about different OSes, especially because I don't have a Mac to test it on. So, I might not consider the saving at all until I get at least most of the launcher done. We'll see.
 
-\- Nerd
+### 5.
+I added a new object model for loot, where it generates whether you get the loot or not automatically with the `Loot.Lottery` variable. It handles what item to spawn, and what the chance that item spawns is. Should hopefully help with the loot stuff, like where the enemy has a 10% chance of dropping a health boost.
+
+### 6.
+Lastly (skipping some small stuff), we have the pause menu. I actually completely forgot about that one. I have that to do, and then the start menu. The pause menu is annoying, because now you have to go into every single script that is in EMD and add a check for if it is paused or not, sometimes even more if the object has physics. Just pretty tedious to do.
+
+### Ending
+Anyways, that's about it. Might not seem like a lot, but the changelog says otherwise. Mainly I just did a bunch of small things I didn't feel like talking about here. You can just look down below.
+**NOTE: Itch users can now see the complete changelog like the [github alternative](https://github.com/That-One-Nerd/Arcade-Maniac/blob/21ga1024.0/Devlog.md), because I found a way to not have to manually convert from markdown to Itch's formatting. So that's great!**
+Anyways, have a good week, and I'll see you next devlog!
 
 ### Stuff to Do:
 - I have to make the arcade cabinet account for framerate like the player controller does when it angles the camera towards itself.
@@ -33,48 +42,70 @@ And you wanna know what? That's ***it***. In 2 weeks. That's all of it. As you c
 - ~~Make the EMD enemy, you know, actually work~~
 - Make the EMD player not be able to walk off screen
 - Make the EMD player flash into a given color instead of only between clear and red
+- Heavily optimize EMD
+- Turn the EMD clouds into a particle system
+- Finish the EMD pause menu
+- Make the EMD start menu
 - Obviously more.
 
 ### Complete changelog:
 | Date | Change |
 | - | - |
-| 10/01/2021 | Upgraded to `Unity 2021.1.23f1` |
-| 10/02/2021 | Applied all variables to the EMD rolling enemy prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Rolling Enemy.prefab`) |
-| 10/02/2021 | Renamed the prefab to "Enemy Rolling" |
-| 10/02/2021 | Added a using modifier for `System.Linq` in the EMD abstract enemy class (`Source/Assets/Minigames/Entity March Dream/Scripts/Abstract/Enemy.cs`) |
-| 10/02/2021 | Changed the `AssignVars()` method in the EMD enemy to instead of looking for only one tilemap collider, look for all and filter for a specific one |
-| 10/02/2021 | Changed the `AssignVars()` method to modify the rigidbody shared material instead of the collider's |
-| 10/02/2021 | Changed the `Awake()` method in the EMD rolling enemy script to modify the rigidbody shared material instead of the collider's (`Source/Assets/Minigames/Entity March Dream/Scripts/EnemyRolling.cs`) |
-| 10/02/2021 | Removed some comments in the EMD rolling enemy script that was there for clarification |
-| 10/02/2021 | Added a new variable `groundDist` in the EMD rolling enemy |
-| 10/02/2021 | Made the `Move()` method in the EMD rolling enemy detect when it is next to a slope and disable gravity when it is (to make it able to climb) on lines 42 - 48 |
-| 10/02/2021 | Added an `OnCollisionStay2D(Collision2D collision)` method in the EMD rolling enemy that detects when the enemy has hit a wall and makes it turn around |
-| 10/02/2021 | Set the player's mass to be 100 (`Source/Assets/Minigames/Entity March Dream/Prefabs/Player.prefab`) |
-| 10/02/2021 | Changed the height of the semisolid platform in the example from `3.36` (idk why it was like that) to `2` |
-| 10/02/2021 | Changed the rolling enemy prefab speed to 2 |
-| 10/02/2021 | Added a `Renderer` private variable to the emd abstract enemy (assigned in the `AssignVars()` method) |
-| 10/02/2021 | Made the abstract enemy's rigidbody be disabled and not run the `Move()` method if the enemy is not on screen |
-| 10/02/2021 | Added a call to `OnHitPlayer()` if the abstract enemy's bounding collider touches the player |
-| 10/02/2021 | Made the abstract enemy despawn when it falls off the world |
-| 10/05/2021 | Swapped line 22 in the abstract enemy script with a new virtual method `OnCollisionStay2D(Collision2D collision)`, which checks for if the player is moving down or not. If it is, execute `OnPlayerStomp()`, otherwise execute `OnHitPlayer()` |
-| 10/05/2021 | Marked the rolling enemy's `OnCollisionStay2D(Collision2D collision)` as protected and override, and made it execute the base method |
-| 10/06/2021 | Added `bounceHeight` and `bounceHeightExtra` variables to the EMD abstract enemy |
-| 10/06/2021 | Made the `OnPlayerStomp()` method `virtual` in the EMD abstract enemy, and moved the code from the rolling enemy's version there |
-| 10/06/2021 | Removed the `OnPlayerStomp()` method in the rolling enemy |
-| 10/06/2021 | Made the player bounce when stomping on an enemy, higher if holding up |
-| 10/06/2021 | Applied the `bounceHeight` and `bounceHeightExtra` variables to the rolling enemy prefab |
-| 10/06/2021 | Added a canvas for UI and made it a prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Game Interface.prefab`) |
-| 10/06/2021 | Added a health slider in the canvas |
-| 10/06/2021 | Made a texture for the health bar (`Source/Assets/Minigames/Entity March Dream/Textures/Health-Bar.png`) |
-| 10/07/2021 | Created a script for each piece of the UI (`Source/Assets/Minigames/Entity March Dream/Scripts/GameInterfacePiece.cs`) |
-| 10/07/2021 | Made the abstract enemy class use `OnCollisionEnter2D` instead of `OnCollisionStay2D` |
-| 10/07/2021 | Created a folder for managing bunches of scripts in EMD (a bunch being many different scripts controlling tiny pieces of one thing. Ex: the many components in a canvas) (`Source/Assets/Minigames/Entity March Dream/Scripts/Bunches/`) |
-| 10/07/2021 | Created a folder for managing the bunch of game interface scripts (`Source/Assets/Minigames/Entity March Dream/Scripts/Bundles/Game Interface`) |
-| 10/07/2021 | Created a script to manage the health bar in the game interface (`Source/Assets/Minigames/Entity March Dream/Scripts/Bundles/Game Interface/HealthBar.cs`) |
-| 10/07/2021 | Gave the health bar its script |
-| 10/13/2021 | Added an extension script for representing gameobject shaking (`Source/Assets/Misc/Scripts/Extensions/ShakeExtension.cs`) |
-| 10/13/2021 | Added an object model for shake data (`Source/Assets/Misc/Scripts/Object Models/ShakeData.cs`) |
-| 10/13/2021 | Added a dictionary in the EMD stats script that contains all canvas components based on their gameobject |
-| 10/13/2021 | Added a constructor to the EMD stats script that assigns all canvas components to the variable |
-| 10/13/2021 | Makes the player health variable in the EMD stats script call `OnGainHealth()` or `OnLoseHealth()` in the EMD health bar depending on if you are gaining or losing health |
-| 10/14/2021 | Created an animation for the EMD health bar when it gains health (`Source/Assets/Minigames/Entity March Dream/Animations/Game Interface/Health Bar/Gain Health.anim`) |
+| 10/20/2021 | Upgraded to `Unity 2021.1.25f1` |
+| 10/20/2021 | Upgraded to `Unity 2021.1.26f1` |
+| 10/20/2021 | Removed some debug code in the EMD Game Interface Health Bar script on line 35 (`Source/Assets/Minigames/Entity March Dream/Scripts/Bunches/Game Interface/HealthBar.cs`) |
+| 10/20/2021 | Created a new extension for interpolating many things, such as floats (`Source/Assets/Misc/Scripts/Extensions/InterpolateExtension.cs`) |
+| 10/20/2021 | Replaced the EMD Health Bar's interpolation with the extension's |
+| 10/20/2021 | Replaced the Arcade Player's rotation interpolation with the extension's (`Source/Assets/Arcade/Scripts/Player.cs`) |
+| 10/20/2021 | Replaced the Arcade Cabinet's rotation interpolation with the extension's (`Source/Assets/Arcade/Scripts/Cabinet.cs`) |
+| 10/20/2021 | Added a text object to the Game Interface to represent the coin count, and applied it to the prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Game Interface.prefab`) |
+| 10/20/2021 | Added a folder in the Misc Fonts for the Pixeled font and its TMP equivalent (`Source/Assets/Misc/Fonts/Pixeled/`) |
+| 10/20/2021 | Added the Pixeled font to its folder (`Source/Assets/Misc/Fonts/Pixeled/Pixeled.ttf`) |
+| 10/20/2021 | Added a child object to the coin counter to represent the coin icon and applied it to the prefab |
+| 10/20/2021 | Created a folder for the coin counter's animations (`Source/Assets/Minigames/Entity March Dream/Animations/Game Interface/Coin Counter/`) |
+| 10/20/2021 | Created an animation for the coin icon to bob up and down (`Source/Assets/Minigames/Entity March Dream/Animations/Game Interface/Coin Counter/Coin Bob.anim`) |
+| 10/20/2021 | Created an animation for the coin icon to change color and size when coins are being collected (`Source/Assets/Minigames/Entity March Dream/Animations/Game Interface/Coin Counter/Coin Collect.anim`) |
+| 10/20/2021 | Created a script for the coin counter (`Source/Assets/Minigames/Entity March Dream/Scripts/Bunches/Game Interface/CoinCounter.cs`) |
+| 10/20/2021 | Gave the counter its script |
+| 10/20/2021 | Created a `CoinsCollected` and a `p_CoinsCollected` private variable in the EMD statistics file (`Source/Assets/Minigames/Entity March Dream/Scripts/Object Models/Statistics.cs`) |
+| 10/20/2021 | Removed the `coinsCollected` variable |
+| 10/20/2021 | Removed a useless `else` statement in the `PlayerHealth` variable |
+| 10/21/2021 | Added an object in the coin counter to represent text background and applied it to the prefab |
+| 10/21/2021 | Added an object to represent the world indicator and applied it to the prefab |
+| 10/21/2021 | Added an object to represent the world indicator's background and applied it to the prefab |
+| 10/21/2021 | Created a script to manage the world indicator (`Source/Assets/Minigames/Entity March Dream/Scripts/Bunches/Game Interface/WorldIndicator.cs`) |
+| 10/21/2021 | Gave the indicator its script |
+| 10/23/2021 | Added `world` and `worldLevel` variables to the Statistics class |
+| 10/23/2021 | Changed the stats file to be a monobehavior |
+| 10/23/2021 | Renamed `instance` to `Instance` in the stats file, and applied get and set permissions to it |
+| 10/23/2021 | Replaced the stats constructor with an `Awake()` method, and assigns the `Instance` variable there |
+| 10/23/2021 | The variables `canvas`, `canvasComponents`, `player`, and `playerInvul` are all marked as internal instead of public |
+| 10/23/2021 | Added a texture to represent the finish (`Source/Assets/Minigames/Entity March Dream/Textures/Finish.png`) |
+| 10/23/2021 | Added an object to represent the finish, and made it a prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Finish.prefab`) |
+| 10/23/2021 | Added 2 identical particle systems to the finish, each facing the other, and applied it to the prefab |
+| 10/23/2021 | Removed a line of code that would create falsities where you stomped the EMD abstract enemy, but it still hit you (`Source/Assets/Minigames/Entity March Dream/Scripts/Abstract/Enemy.cs`) |
+| 10/23/2021 | Created a script to represent the finish (`Source/Assets/Minigames/Entity March Dream/Scripts/Finish.cs`) |
+| 10/23/2021 | Gave the finish its script |
+| 10/23/2021 | Marked the EMD player's `anim` variable as internal (`Source/Assets/Minigames/Entity March Dream/Scripts/Player.cs`) |
+| 10/23/2021 | Replaced the EMD player camera's instance of the Player with a gameobject instead (`Source/Assets/Minigames/Entity March Dream/Scripts/PlayerCamera.cs`) |
+| 10/23/2021 | Added a script to represent any item in EMD (`Source/Assets/Minigames/Entity March Dream/Scripts/Abstract/Item.cs`) |
+| 10/23/2021 | Renamed `ren` to `sr` in the EMD abstract enemy |
+| 10/23/2021 | Changed the type of `sr` from `Renderer` to `SpriteRenderer` in the EMD abstract enemy |
+| 10/23/2021 | Moved the `tilemap` variable from the abstract enemy to the rolling enemy (`Source/Assets/Minigames/Entity March Dream/Scripts/EnemyRolling.cs`) |
+| 10/23/2021 | Created a texture to represent 2 types of health boosts (`Source/Assets/Minigames/Entity March Dream/Textures/Health-Boosts.png`)) |
+| 10/23/2021 | Added an object to contain all item types |
+| 10/23/2021 | Created a script to represent a health boost (`Source/Assets/Minigames/Entity March Dream/Scripts/ItemHealthBoost.cs`) |
+| 10/23/2021 | Created an object to represent a health boost and made it a prefab (`Source/Assets/Minigames/Entity March Dream/Prefabs/Health Boost.prefab`) |
+| 10/23/2021 | Gave the item its script |
+| 10/23/2021 | Correctly renamed the EMD spike textures (`Source/Assets/Minigames/Entity March Dream/Textures/Spikes.png`) |
+| 10/23/2021 | Moved the `Spike Right` texture further to the left to match up with the wall |
+| 10/23/2021 | Created a struct to represent loot data (`Source/Assets/Misc/Scripts/Object Models/Loot.cs`) |
+| 10/24/2021 | Created a `deathLoot` parameter in the abstract enemy |
+| 10/24/2021 | Made the abstract enemy drop loot on death |
+| 10/24/2021 | Made the `Die()` method virtual, and applied some standard code to it |
+| 10/24/2021 | Removed a useless override of the `Die()` method in the rolling enemy |
+| 10/24/2021 | Added an object to the game interface that represents and contains the pause menu |
+| 10/24/2021 | Created a script to represent the general pause menu as a whole (`Source/Assets/Minigames/Entity March Dream/Scripts/Bunches/Game Interface/PauseMenu.cs`) |
+| 10/24/2021 | Gave the object its script |
+| 10/24/2021 | Modified most classes in EMD to not update or move when paused |
+| 10/24/2021 | Created a text object in the EMD pause menu |

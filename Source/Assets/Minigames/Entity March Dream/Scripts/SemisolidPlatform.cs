@@ -1,3 +1,4 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
@@ -21,6 +22,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
         private void Update()
         {
+            if (PauseMenu.IsPaused) return;
+
             above = p.col == null ? above : p.col.bounds.min.y + (detectionGiveRoom * (above ? 1 : -1)) >= col.bounds.max.y;
 
             col.enabled = above;

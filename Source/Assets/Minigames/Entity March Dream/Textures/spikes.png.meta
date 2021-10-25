@@ -4,16 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 8382717070696663976
-    second: spikes_0
+    second: Spikes Left
   - first:
       213: -2244080383998043531
-    second: spikes_1
+    second: Spikes Up
   - first:
       213: -7836376798481834204
-    second: spikes_2
+    second: Spikes Right
   - first:
       213: -8328159106608433595
-    second: spikes_3
+    second: Spikes Down
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spikes_0
+      name: Spikes Left
       rect:
         serializedVersion: 2
         x: 0
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spikes_1
+      name: Spikes Up
       rect:
         serializedVersion: 2
         x: 8
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spikes_2
+      name: Spikes Right
       rect:
         serializedVersion: 2
         x: 0
@@ -190,7 +190,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spikes_3
+      name: Spikes Down
       rect:
         serializedVersion: 2
         x: 8

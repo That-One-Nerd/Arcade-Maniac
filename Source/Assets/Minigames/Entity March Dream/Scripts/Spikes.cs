@@ -19,7 +19,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision != p.col) return;
-            Statistics.instance.PlayerHealth -= Math.Abs(p.rb.velocity.y) >= extraDamageSpeed ? extraDamage : damage;
+            Statistics.Instance.PlayerHealth -= Math.Abs(p.rb.velocity.y) >= extraDamageSpeed ? extraDamage : damage;
         }
     }
 }

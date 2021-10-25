@@ -3,6 +3,7 @@ using System.Linq;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abstract;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 {
@@ -15,10 +16,13 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         public float groundDist;
 
         private bool moveRight;
+        private TilemapCollider2D tilemap;
 
         protected override void Awake()
         {
             AssignVars();
+            tilemap = FindObjectsOfType<TilemapCollider2D>().FirstOrDefault(x => x.gameObject.name == "Collision");
+
             rb.sharedMaterial = new PhysicsMaterial2D("Rolling Enemy Physics Material")
             {
                 bounciness = 0,
@@ -26,9 +30,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             };
         }
 
-        protected override void Die() => Destroy(gameObject);
-
-        protected override void OnHitPlayer() => Statistics.instance.PlayerHealth -= damage;
+        protected override void OnHitPlayer() => Statistics.Instance.PlayerHealth -= damage;
 
         protected override void Move()
         {
