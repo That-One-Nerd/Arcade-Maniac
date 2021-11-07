@@ -152,7 +152,7 @@ MonoBehaviour:
   fallSpeed: 20
   gravityScale: 1
   groundTag: EMD Ground
-  invulFlashMode: 1
+  invulFlashColor: {r: 1, g: 0.5, b: 0.5, a: 1}
   invulFlashSpeed: 10
   invulTime: 3
   jumpHeight: 12.5

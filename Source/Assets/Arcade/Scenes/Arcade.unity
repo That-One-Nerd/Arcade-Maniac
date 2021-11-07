@@ -2099,7 +2099,7 @@ MonoBehaviour:
   camMovementSpeed: 7.5
   camSetting: {fileID: 654057668}
   maxCamTimer: 2
-  sceneName: EMD Level 1-1
+  sceneName: EMD Title Screen
   transitionImage: {fileID: 0}
 --- !u!64 &1792768457
 MeshCollider:

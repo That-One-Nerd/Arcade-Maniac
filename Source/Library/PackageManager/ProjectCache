@@ -5,22 +5,22 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637703633500000000
-    m_Hash: 3556067890
+      ticks: 637711943300000000
+    m_Hash: 1624860386
   m_LockFileStatus:
     m_FilePath: E:/Kyle's Stuff/Gits/Repos/Arcade-Maniac/Source/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637703634000000000
-    m_Hash: 2249904715
+      ticks: 637711943300000000
+    m_Hash: 1342448291
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: E:/Kyle's Stuff/Gits/Repos/Arcade-Maniac/Source/Packages
-m_EditorVersion: 2021.1.26f1 (6f076387c01d)
+m_EditorVersion: 2021.1.27f1 (7e296a84045d)
 m_ResolvedPackages:
 - packageId: com.unity.2d.animation@6.0.5
   testable: 0
@@ -81,6 +81,7 @@ m_ResolvedPackages:
     - 3.2.9
     - 3.2.10
     - 3.2.11
+    - 3.2.13
     - 4.0.0
     - 4.0.1
     - 4.1.0
@@ -101,6 +102,7 @@ m_ResolvedPackages:
     - 5.0.6
     - 5.0.7
     - 5.0.8
+    - 5.0.9
     - 6.0.0-pre.1
     - 6.0.0-pre.2
     - 6.0.1
@@ -112,6 +114,7 @@ m_ResolvedPackages:
     - 7.0.0-pre.3
     - 7.0.0
     - 7.0.1
+    - 8.0.0-pre.3
     compatible:
     - 6.0.5
     - 6.0.7
@@ -291,6 +294,7 @@ m_ResolvedPackages:
     - 2.1.5
     - 2.1.6
     - 2.1.8
+    - 2.1.9
     - 3.0.0
     - 3.1.1
     - 3.1.3
@@ -303,6 +307,7 @@ m_ResolvedPackages:
     - 4.0.2
     - 4.1.0
     - 4.1.1
+    - 4.1.2
     - 5.0.0-pre.1
     - 5.0.0-pre.2
     - 5.0.1
@@ -314,6 +319,7 @@ m_ResolvedPackages:
     - 6.0.0-pre.4
     - 6.0.0
     - 6.0.1
+    - 7.0.0-pre.3
     compatible:
     - 5.0.4
     - 5.0.6
@@ -508,6 +514,7 @@ m_ResolvedPackages:
     - 7.0.0-pre.3
     - 7.0.0
     - 7.0.2
+    - 8.0.0-pre.4
     compatible:
     - 6.0.1
     - 6.0.2
@@ -673,6 +680,7 @@ m_ResolvedPackages:
     - 2.0.0
     - 2.2.0
     - 2.2.1
+    - 3.0.0
     compatible:
     - 2.2.0
     - 2.2.1
@@ -776,6 +784,8 @@ m_ResolvedPackages:
     - 1.11.2
     - 1.12.5
     - 1.13.5
+    - 1.14.1
+    - 1.15.1
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -788,6 +798,8 @@ m_ResolvedPackages:
     - 2.1.0-preview.6
     compatible:
     - 1.13.5
+    - 1.14.1
+    - 1.15.1
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -1598,6 +1610,7 @@ m_ResolvedPackages:
     - 1.5.4
     - 1.5.5
     - 1.5.6
+    - 1.5.7
     - 1.6.0-pre.1
     - 1.6.0-pre.3
     - 1.6.0-pre.4
@@ -1607,6 +1620,7 @@ m_ResolvedPackages:
     - 1.6.3
     compatible:
     - 1.5.6
+    - 1.5.7
     - 1.6.0-pre.1
     - 1.6.0-pre.3
     - 1.6.0-pre.4
@@ -1614,7 +1628,7 @@ m_ResolvedPackages:
     - 1.6.1
     - 1.6.2
     - 1.6.3
-    verified: 1.5.6
+    verified: 1.5.7
   dependencies:
   - name: com.unity.modules.director
     version: 1.0.0

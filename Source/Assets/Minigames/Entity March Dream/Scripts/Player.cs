@@ -19,7 +19,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
         public float fallSpeed;
         public float gravityScale;
         public string groundTag;
-        public InvulFlashMode invulFlashMode;
+        public Color invulFlashColor;
         public float invulFlashSpeed;
         public float invulTime;
         public float jumpHeight;
@@ -71,13 +71,16 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             if (!sr.isVisible) rb.velocity = Vector2.zero;
             if (transform.position.y < deathFloor) Die();
 
-            if (Statistics.Instance.playerInvul.HasValue) 
-                Statistics.Instance.playerInvul =
-                    Statistics.Instance.playerInvul <= 0 ? null
-                    : Statistics.Instance.playerInvul - Time.deltaTime;
+            if (Statistics.Instance != null)
+            {
+                if (Statistics.Instance.playerInvul.HasValue)
+                    Statistics.Instance.playerInvul =
+                        Statistics.Instance.playerInvul <= 0 ? null
+                        : Statistics.Instance.playerInvul - Time.deltaTime;
 
-            float colorVal = Mathf.Cos(alive ? (Statistics.Instance.playerInvul ?? 0) * invulFlashSpeed : Mathf.PI) / 4 + 0.75f;
-            sr.color = invulFlashMode == InvulFlashMode.Transparent ? new Color(1, 1, 1, colorVal) : new Color(1, colorVal, colorVal, 1);
+                float colorVal = Mathf.Cos(alive ? (Statistics.Instance.playerInvul ?? 0) * invulFlashSpeed : Mathf.PI) / 2 + 0.5f;
+                sr.color = Color.Lerp(invulFlashColor, Color.white, colorVal);
+            }
         }
 
         private void Movement()

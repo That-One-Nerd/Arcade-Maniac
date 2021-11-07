@@ -16,9 +16,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abst
         protected Rigidbody2D rb;
         protected SpriteRenderer sr;
 
-        private float? oldGravityScale;
-        private Vector2? oldVelocity;
-
         protected virtual void Awake() => AssignVars();
 
         protected virtual void Update()

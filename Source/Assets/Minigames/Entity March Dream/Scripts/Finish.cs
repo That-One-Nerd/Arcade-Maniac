@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions;
 using UnityEngine;
@@ -62,6 +63,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
             pAnim.SetInteger("Mode", 0);
             p.transform.position = transform.position + Vector3.down * 0.1875f;
+
+            new SaveData().Save();
             Transition.Instance.FadeTransition(transitionScene, transitionSpeed);
         }
     }

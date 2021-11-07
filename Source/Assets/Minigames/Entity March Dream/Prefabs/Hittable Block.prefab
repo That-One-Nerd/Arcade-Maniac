@@ -175,6 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionGiveRoom: 0.05
+  hitLoot:
+    chance: 1
+    lootObject: {fileID: 101698082087712127, guid: ceb40b91b88e4e94eb383c5e3e9862c3, type: 3}
   hitSprite: {fileID: 4633440025734991815, guid: 3141bc19898749c4eaeb5c634e979ea5, type: 3}
-  timeUntilSpawn: 0.33333334
-  toSpawn: {fileID: 2267030654989870699, guid: 555234d1e2a79f948aa561d8c61f39f7, type: 3}
+  maxHits: 1
