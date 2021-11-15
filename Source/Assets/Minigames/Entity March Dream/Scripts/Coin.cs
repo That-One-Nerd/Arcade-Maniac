@@ -32,6 +32,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             if (p.col != null && col.IsTouching(p.col))
             {
                 Statistics.Instance.CoinsCollected++;
+                Statistics.Instance.player.audioSource.PlayOneShot(Statistics.Instance.player.coinSound);
                 Destroy(gameObject);
             }
         }

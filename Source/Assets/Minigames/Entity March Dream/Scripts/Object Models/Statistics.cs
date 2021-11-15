@@ -54,10 +54,15 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Obje
                 {
                     if (playerInvul.HasValue) return;
                     health.OnLoseHealth();
+                    player.audioSource.PlayOneShot(player.hurtSound);
                     if (value == 0) player.Die();
                     else playerInvul = player.invulTime;
                 }
-                else health.OnGainHealth();
+                else
+                {
+                    health.OnGainHealth();
+                    player.audioSource.PlayOneShot(player.healSound);
+                }
 
                 p_PlayerHealth = value;
             }

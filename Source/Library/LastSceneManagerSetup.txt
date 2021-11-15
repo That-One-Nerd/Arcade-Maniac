@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Minigames/Entity March Dream/Scenes/Testing Game.unity
+- path: Assets/Minigames/Rocket Mayhem/Scenes/Testing Game.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

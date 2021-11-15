@@ -1,5 +1,6 @@
 using System.Linq;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.ObjectModels;
 using UnityEngine;
 
@@ -44,6 +45,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Abst
         protected virtual void Die()
         {
             if (deathLoot.Lottery) Instantiate(deathLoot.lootObject, transform.position, Quaternion.Euler(Vector3.zero));
+            Statistics.Instance.player.audioSource.PlayOneShot(Statistics.Instance.player.stompSound);
             Destroy(gameObject);
         }
         protected abstract void OnHitPlayer();

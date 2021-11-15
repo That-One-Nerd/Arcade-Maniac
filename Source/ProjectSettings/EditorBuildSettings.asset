@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Entity March Dream/Scenes/World 1/EMD Level 1-1.unity
     guid: 9747082ec82c9b34bbe5f5ce8494f6fd
+  - enabled: 1
+    path: Assets/Minigames/Entity March Dream/Scenes/World 1/EMD Level 1-2.unity
+    guid: a0b34108169bda640b1135ed4254cdec
   m_configObjects: {}

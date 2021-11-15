@@ -5,22 +5,22 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637711943300000000
-    m_Hash: 1624860386
+      ticks: 637724066440000000
+    m_Hash: 3982028761
   m_LockFileStatus:
     m_FilePath: E:/Kyle's Stuff/Gits/Repos/Arcade-Maniac/Source/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637711943300000000
-    m_Hash: 1342448291
+      ticks: 637724066440000000
+    m_Hash: 369902165
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: E:/Kyle's Stuff/Gits/Repos/Arcade-Maniac/Source/Packages
-m_EditorVersion: 2021.1.27f1 (7e296a84045d)
+m_EditorVersion: 2021.1.28f1 (f3f9dc10f3dd)
 m_ResolvedPackages:
 - packageId: com.unity.2d.animation@6.0.5
   testable: 0
@@ -82,6 +82,7 @@ m_ResolvedPackages:
     - 3.2.10
     - 3.2.11
     - 3.2.13
+    - 3.2.14
     - 4.0.0
     - 4.0.1
     - 4.1.0
@@ -114,6 +115,7 @@ m_ResolvedPackages:
     - 7.0.0-pre.3
     - 7.0.0
     - 7.0.1
+    - 7.0.2
     - 8.0.0-pre.3
     compatible:
     - 6.0.5
@@ -295,6 +297,7 @@ m_ResolvedPackages:
     - 2.1.6
     - 2.1.8
     - 2.1.9
+    - 2.1.10
     - 3.0.0
     - 3.1.1
     - 3.1.3
@@ -514,6 +517,7 @@ m_ResolvedPackages:
     - 7.0.0-pre.3
     - 7.0.0
     - 7.0.2
+    - 7.0.3
     - 8.0.0-pre.4
     compatible:
     - 6.0.1
@@ -940,12 +944,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.7
     nextVersion: 
-- packageId: com.unity.ide.visualstudio@2.0.11
+- packageId: com.unity.ide.visualstudio@2.0.12
   testable: 0
   isDirectDependency: 1
-  version: 2.0.11
+  version: 2.0.12
   source: 1
-  resolvedPath: E:\Kyle's Stuff\Gits\Repos\Arcade-Maniac\Source\Library\PackageCache\com.unity.ide.visualstudio@2.0.11
+  resolvedPath: E:\Kyle's Stuff\Gits\Repos\Arcade-Maniac\Source\Library\PackageCache\com.unity.ide.visualstudio@2.0.12
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -977,9 +981,11 @@ m_ResolvedPackages:
     - 2.0.8
     - 2.0.9
     - 2.0.11
+    - 2.0.12
     compatible:
     - 2.0.11
-    verified: 2.0.11
+    - 2.0.12
+    verified: 2.0.12
   dependencies:
   - name: com.unity.test-framework
     version: 1.1.9
@@ -1005,13 +1011,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637613656180000000
+  datePublishedTicks: 637720564750000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-    revision: 680e06d94ffca728223ae2cb14bb919cd354e2c1
+    revision: 8d436ff053b9c59677b5e9799208143553cd02d9
     path: 
   unityLifecycle:
     version: 2.0.11
@@ -1469,6 +1475,7 @@ m_ResolvedPackages:
     - 2.1.5
     - 2.1.6
     - 2.2.0-preview.1
+    - 2.2.0-preview.2
     - 3.0.0-preview.1
     - 3.0.0-preview.3
     - 3.0.0-preview.4
@@ -1487,9 +1494,12 @@ m_ResolvedPackages:
     - 3.0.5
     - 3.0.6
     - 3.2.0-pre.1
+    - 3.2.0-pre.2
+    - 4.0.0-pre.1
     compatible:
     - 3.0.6
     - 3.2.0-pre.1
+    - 3.2.0-pre.2
     verified: 3.0.6
   dependencies:
   - name: com.unity.ugui
@@ -1530,12 +1540,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.6
     nextVersion: 
-- packageId: com.unity.timeline@1.5.6
+- packageId: com.unity.timeline@1.5.7
   testable: 0
   isDirectDependency: 1
-  version: 1.5.6
+  version: 1.5.7
   source: 1
-  resolvedPath: E:\Kyle's Stuff\Gits\Repos\Arcade-Maniac\Source\Library\PackageCache\com.unity.timeline@1.5.6
+  resolvedPath: E:\Kyle's Stuff\Gits\Repos\Arcade-Maniac\Source\Library\PackageCache\com.unity.timeline@1.5.7
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -1618,8 +1628,8 @@ m_ResolvedPackages:
     - 1.6.1
     - 1.6.2
     - 1.6.3
+    - 1.7.0-pre.1
     compatible:
-    - 1.5.6
     - 1.5.7
     - 1.6.0-pre.1
     - 1.6.0-pre.3
@@ -1628,6 +1638,7 @@ m_ResolvedPackages:
     - 1.6.1
     - 1.6.2
     - 1.6.3
+    - 1.7.0-pre.1
     verified: 1.5.7
   dependencies:
   - name: com.unity.modules.director
@@ -1665,16 +1676,16 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637613662510000000
+  datePublishedTicks: 637704360510000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: bba45362fa74fde39bfa14d05688da527254b39f
+    revision: b0c6687b4bae7608c23b04edd20e0b8002476c6f
     path: 
   unityLifecycle:
-    version: 1.5.6
+    version: 1.5.7
     nextVersion: 
 - packageId: com.unity.ugui@1.0.0
   testable: 0
@@ -1779,6 +1790,7 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.5
+    - 1.7.6
     - 1.8.0-pre.1
     compatible:
     - 1.6.1
@@ -1786,6 +1798,7 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.5
+    - 1.7.6
     verified: 1.6.1
   dependencies:
   - name: com.unity.ugui
@@ -3861,6 +3874,7 @@ m_ResolvedPackages:
     - 10.5.0
     - 10.5.1
     - 10.6.0
+    - 10.7.0
     - 11.0.0
     compatible:
     - 11.0.0
@@ -4018,6 +4032,7 @@ m_ResolvedPackages:
     - 10.5.0
     - 10.5.1
     - 10.6.0
+    - 10.7.0
     - 11.0.0
     compatible:
     - 11.0.0
@@ -4148,6 +4163,7 @@ m_ResolvedPackages:
     - 10.5.0
     - 10.5.1
     - 10.6.0
+    - 10.7.0
     - 11.0.0
     compatible:
     - 11.0.0
@@ -4260,6 +4276,7 @@ m_ResolvedPackages:
     - 10.5.0
     - 10.5.1
     - 10.6.0
+    - 10.7.0
     - 11.0.0
     compatible:
     - 11.0.0
@@ -4341,10 +4358,12 @@ m_ResolvedPackages:
     - 2.0.0-preview.2
     - 2.0.0
     - 2.0.1-preview.1
+    - 2.0.2
     compatible:
     - 2.0.0
     - 2.0.1-preview.1
-    verified: 2.0.0
+    - 2.0.2
+    verified: 2.0.2
   dependencies: []
   resolvedDependencies: []
   keywords: []
@@ -4396,8 +4415,18 @@ m_ResolvedPackages:
   versions:
     all:
     - 1.0.1
+    - 1.1.0-pre.7
+    - 1.1.0-pre.8
+    - 1.1.0-pre.9
+    - 1.1.0-pre.10
+    - 1.1.0-pre.11
     compatible:
     - 1.0.1
+    - 1.1.0-pre.7
+    - 1.1.0-pre.8
+    - 1.1.0-pre.9
+    - 1.1.0-pre.10
+    - 1.1.0-pre.11
     verified: 1.0.1
   dependencies:
   - name: com.unity.modules.unitywebrequest
@@ -4418,7 +4447,7 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 0
+  datePublishedTicks: 637604883250000000
   documentationUrl: 
   hasRepository: 1
   repository:
@@ -4464,9 +4493,13 @@ m_ResolvedPackages:
     - 1.1.0-preview.1
     - 1.1.0
     - 1.2.1
+    - 1.2.4
+    - 1.2.5
     compatible:
     - 1.2.1
-    verified: 1.2.1
+    - 1.2.4
+    - 1.2.5
+    verified: 1.2.5
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -4538,6 +4571,8 @@ m_ResolvedPackages:
     - 6.0.0-pre.3
     - 6.0.0-pre.4
     - 6.0.0
+    - 6.0.1
+    - 7.0.0-pre.3
     compatible:
     - 5.0.0
     verified: 5.0.0
@@ -4692,10 +4727,12 @@ m_ResolvedPackages:
     - 4.3.2
     - 4.6.0-preview
     - 4.7.0-preview
+    - 4.9.1
     compatible:
     - 4.3.2
     - 4.6.0-preview
     - 4.7.0-preview
+    - 4.9.1
     verified: 4.3.2
   dependencies: []
   resolvedDependencies: []

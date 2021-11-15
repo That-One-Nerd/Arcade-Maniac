@@ -14,24 +14,33 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             new Vector2(col.bounds.extents.x, maxGroundDist), 0).Any(x => x.CompareTag(groundTag));
 
         public float animSpeed;
+        public AudioClip coinSound;
         public float deathDrag;
         public float deathFloor;
         public float fallSpeed;
         public float gravityScale;
         public string groundTag;
+        public AudioClip healSound;
+        public AudioClip hurtSound;
         public Color invulFlashColor;
         public float invulFlashSpeed;
         public float invulTime;
         public float jumpHeight;
         public float jumpHeightDeath;
+        public AudioClip landSound;
+        public AudioClip jumpSound;
         public float maxGroundDist;
         public float speed;
+        public AudioClip stompSound;
+        public AudioClip walkSound;
 
         internal Animator anim;
+        internal AudioSource audioSource;
         internal Collider2D col;
         internal Rigidbody2D rb;
 
         private bool alive;
+        private bool oldIsGrounded;
         private SpriteRenderer sr;
 
         private void Awake()
@@ -39,6 +48,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             alive = true;
 
             anim = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
             col = GetComponent<Collider2D>();
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
@@ -91,9 +101,16 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
             if (Input.GetAxisRaw("Vertical") > 0 && IsGrounded) velocity.y = jumpHeight;
 
-            rb.velocity = velocity;
-        }
+            if (IsGrounded != oldIsGrounded)
+            {
+                if (IsGrounded) audioSource.PlayOneShot(landSound);
+                else if (Input.GetAxisRaw("Vertical") > 0) audioSource.PlayOneShot(jumpSound);
+            }
 
+            rb.velocity = velocity;
+
+            oldIsGrounded = IsGrounded;
+        }
         private void Animation()
         {
             sr.flipX = rb.velocity.x <= 0 && (rb.velocity.x < 0 || sr.flipX);
@@ -104,7 +121,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             anim.SetInteger("Mode", IsGrounded ? rounded.x == 0 ? 0 : 1 : rounded.y > 0 ? 2 : 3);
             anim.SetFloat("Speed", Mathf.Abs(rounded.x * animSpeed));
         }
-
         private void Collision()
         {
             Vector2 offset = col.offset;
@@ -114,6 +130,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             col.offset = offset;
         }
 
+        private void PlayWalkSound() => audioSource.PlayOneShot(walkSound);
+
         public void Die()
         {
             if (!alive) return;
@@ -122,6 +140,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
             rb.drag = deathDrag;
             rb.velocity = new Vector2(rb.velocity.x, jumpHeightDeath);
             Destroy(col);
+            audioSource.PlayOneShot(hurtSound);
 
             Transition.Instance.InstantTransition(SceneManager.GetActiveScene().name, 2.5f);
         }
