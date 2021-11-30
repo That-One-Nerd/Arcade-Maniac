@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,13 +53,11 @@
     <UnityVersion>2021.1.28f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Start Menu\AnyKeyText.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\SemisolidPlatform.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Game Interface\PauseButton.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Abstract\Enemy.cs" />
+    <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\EnemyRocket.cs" />
     <Compile Include="Assets\Arcade\Scripts\Cabinet.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Object Models\Statistics.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Start Menu\StartArrow.cs" />
@@ -76,6 +74,7 @@
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Finish.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Game Interface\CoinCounter.cs" />
     <Compile Include="Assets\Misc\Scripts\Object Models\ShakeData.cs" />
+    <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\EnemyRocketSpawner.cs" />
     <Compile Include="Assets\Misc\Scripts\Extensions\InterpolateExtension.cs" />
     <Compile Include="Assets\Arcade\Scripts\StatCanvas.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\HittableBlock.cs" />
@@ -95,6 +94,7 @@
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\PlayerCamera.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Start Menu\StartMenu.cs" />
     <Compile Include="Assets\Misc\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

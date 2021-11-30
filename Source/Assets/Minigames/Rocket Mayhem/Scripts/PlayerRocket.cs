@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Linq;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 {
@@ -9,6 +12,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 
         public float activeDecreaseSpeed;
         public float activeIncreaseSpeed;
+        public ParticleSystem[] particles;
         public Sprite[] possibleRockets;
         public float speed;
         public float speedRot;
@@ -25,6 +29,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
             sr = GetComponent<SpriteRenderer>();
 
             sr.sprite = possibleRockets[Random.Range(0, possibleRockets.Length)];
+
+            StartCoroutine(TestParticles());
         }
 
         private void Update()
@@ -34,18 +40,33 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 
             if (active == 0) return;
 
-            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition),
-                dist = mousePos - transform.position;
+            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+            Vector3 dist = Vector3.ClampMagnitude(mousePos - transform.position, 1);
 
-            rb.velocity = active * speed * dist.normalized;
+            Vector3 normalized = dist.normalized;
+            float tan = Mathf.Atan2(normalized.y, normalized.x) * (180 / Mathf.PI) - 90;
 
-            float hypo = Mathf.Sqrt(dist.x * dist.x + dist.y * dist.y),
-                tan = Mathf.Atan2(dist.y / hypo, dist.x / hypo) * (180 / Mathf.PI);
+            Quaternion rot = transform.rotation;
 
-            const float addive = 360;
-            float rot = transform.rotation.eulerAngles.z + addive;
-            transform.rotation = Quaternion.Euler(Vector3.forward * (rot.Interpolate(tan + 270, speedRot) - addive));
-            // TODO: make rotation better
+            Quaternion newRot = rot.Interpolate(Quaternion.Euler(Vector3.forward * tan), speedRot * active);
+
+            transform.rotation = newRot;
+
+            rb.velocity = active * speed * transform.up;
+        }
+
+        private IEnumerator TestParticles()
+        {
+            particles[0].Stop(true);
+
+            if (!AnyMouseButton) yield return null;
+            particles[0].Play(true);
+
+            if (AnyMouseButton) yield return null;
+            if (!AnyMouseButton) yield return null;
+
+            particles[0].Stop(true);
         }
     }
 }

@@ -14,27 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Minigames/Entity March Dream/Scenes/Testing Game_Profiles.meta
-    - Assets/Minigames/Entity March Dream/Scenes/Testing Game_Profiles/Post Processing
-      Profile.asset
-    - Assets/Minigames/Entity March Dream/Scenes/Testing Game_Profiles/Post Processing
-      Profile.asset.meta
-    - Assets/Minigames/Entity March Dream/Scenes/World 1/EMD Level 1-1.unity
-    - Assets/Minigames/Entity March Dream/Scenes/World 1/EMD Level 1-2.unity
-    - Assets/Minigames/Entity March Dream/Scenes/World 1/EMD Level 1-2.unity.meta
-    - Assets/Minigames/Rocket Mayhem.meta
-    - Assets/Minigames/Rocket Mayhem/Scenes.meta
+    - Assets/Minigames/Rocket Mayhem/Prefabs.meta
+    - Assets/Minigames/Rocket Mayhem/Prefabs/Enemy Rocket Spawner.prefab
+    - Assets/Minigames/Rocket Mayhem/Prefabs/Enemy Rocket.prefab
+    - Assets/Minigames/Rocket Mayhem/Prefabs/Player Rocket.prefab
+    - Assets/Minigames/Rocket Mayhem/Prefabs/Player Rocket.prefab.meta
     - Assets/Minigames/Rocket Mayhem/Scenes/Testing Game.unity
-    - Assets/Minigames/Rocket Mayhem/Scenes/Testing Game.unity.meta
-    - Assets/Minigames/Rocket Mayhem/Scripts.meta
+    - Assets/Minigames/Rocket Mayhem/Scripts/EnemyRocket.cs
+    - Assets/Minigames/Rocket Mayhem/Scripts/EnemyRocketSpawner.cs
     - Assets/Minigames/Rocket Mayhem/Scripts/PlayerRocket.cs
-    - Assets/Minigames/Rocket Mayhem/Scripts/PlayerRocket.cs.meta
-    - Assets/Minigames/Rocket Mayhem/Textures.meta
-    - Assets/Minigames/Rocket Mayhem/Textures/Player-Rockets.png
-    - Assets/Minigames/Rocket Mayhem/Textures/Player-Rockets.png.meta
-    - ProjectSettings/EditorBuildSettings.asset
     - 
-    m_Values: 000000000000000000000000000000000000
+    m_Values: 00000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
