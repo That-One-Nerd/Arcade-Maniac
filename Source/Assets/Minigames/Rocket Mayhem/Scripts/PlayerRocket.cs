@@ -29,8 +29,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
             sr = GetComponent<SpriteRenderer>();
 
             sr.sprite = possibleRockets[Random.Range(0, possibleRockets.Length)];
-
-            StartCoroutine(TestParticles());
         }
 
         private void Update()
@@ -54,19 +52,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
             transform.rotation = newRot;
 
             rb.velocity = active * speed * transform.up;
-        }
-
-        private IEnumerator TestParticles()
-        {
-            particles[0].Stop(true);
-
-            if (!AnyMouseButton) yield return null;
-            particles[0].Play(true);
-
-            if (AnyMouseButton) yield return null;
-            if (!AnyMouseButton) yield return null;
-
-            particles[0].Stop(true);
         }
     }
 }

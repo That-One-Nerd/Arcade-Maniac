@@ -14,17 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Minigames/Rocket Mayhem/Prefabs.meta
-    - Assets/Minigames/Rocket Mayhem/Prefabs/Enemy Rocket Spawner.prefab
-    - Assets/Minigames/Rocket Mayhem/Prefabs/Enemy Rocket.prefab
-    - Assets/Minigames/Rocket Mayhem/Prefabs/Player Rocket.prefab
-    - Assets/Minigames/Rocket Mayhem/Prefabs/Player Rocket.prefab.meta
-    - Assets/Minigames/Rocket Mayhem/Scenes/Testing Game.unity
-    - Assets/Minigames/Rocket Mayhem/Scripts/EnemyRocket.cs
-    - Assets/Minigames/Rocket Mayhem/Scripts/EnemyRocketSpawner.cs
-    - Assets/Minigames/Rocket Mayhem/Scripts/PlayerRocket.cs
+    - Assets/Minigames/Rocket Mayhem/Scripts/ProjectileExploding.cs
     - 
-    m_Values: 00000000000000000000
+    m_Values: 0101
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 

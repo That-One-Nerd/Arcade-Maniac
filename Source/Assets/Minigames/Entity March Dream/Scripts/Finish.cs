@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Linq;
+using System.Threading.Tasks;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.Bunches.GameInterface;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream.ObjectModels;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc;
@@ -30,12 +30,12 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
             if (Physics2D.OverlapBoxAll(trigger.bounds.center, trigger.size, 0).Any(x => x == p.col) && !triggered)
             {
-                StartCoroutine(IFinish());
+                FinishAsync();
                 triggered = true;
             }
         }
 
-        private IEnumerator IFinish()
+        private async void FinishAsync()
         {
             GameObject p = this.p.gameObject;
             Animator pAnim = this.p.anim;
@@ -58,7 +58,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.EntityMarchDream
 
                 p.transform.position = p.transform.position.Interpolate(roundedPos, playerSpeed);
 
-                yield return null;
+                await Task.Yield();
             }
 
             pAnim.SetInteger("Mode", 0);

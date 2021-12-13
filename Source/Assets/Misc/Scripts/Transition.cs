@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,65 +22,65 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc
         }
         private void Update() { if (!Transitioning) ima.color = new Color(ima.color.r, ima.color.r, ima.color.g, Mathf.Clamp(ima.color.a - (Time.deltaTime * Speed), 0, 1)); }
     
-        public void FadeTransition(string sceneName, float speed = 1, Color? color = null, float startDelay = 0, float afterSpeed = -1, float afterDelay = 0) { if (!Transitioning) StartCoroutine(IFadeTransition(sceneName, speed, color ?? Color.black, startDelay, afterSpeed, afterDelay)); }
-        public void ImageTransition(string sceneName, float speed = 1, Texture image = null, float startDelay = 0, float afterSpeed = -1, float afterDelay = 0) { if (!Transitioning) StartCoroutine(IImageTransition(sceneName, speed, image, startDelay, afterSpeed, afterDelay)); }
-        public void InstantTransition(string sceneName, float delay = 0) { if (!Transitioning) StartCoroutine(IInstantTransition(sceneName, delay)); }
+        public void FadeTransition(string sceneName, float speed = 1, Color? color = null, float startDelay = 0, float afterSpeed = -1, float afterDelay = 0) { if (!Transitioning) FadeAsync(sceneName, speed, color ?? Color.black, startDelay, afterSpeed, afterDelay); }
+        public void ImageTransition(string sceneName, float speed = 1, Texture image = null, float startDelay = 0, float afterSpeed = -1, float afterDelay = 0) { if (!Transitioning) ImageAsync(sceneName, speed, image, startDelay, afterSpeed, afterDelay); }
+        public void InstantTransition(string sceneName, float delay = 0) { if (!Transitioning) InstantAsync(sceneName, delay); }
 
-        private IEnumerator IFadeTransition(string sceneName, float speed, Color color, float startDelay, float afterSpeed, float afterDelay)
+        private async void FadeAsync(string sceneName, float speed, Color color, float startDelay, float afterSpeed, float afterDelay)
         {
             Transitioning = true;
             ima.color = new Color(color.r, color.g, color.b, 0);
             ima.texture = null;
 
-            for (float f = 0; f < startDelay; f += Time.deltaTime) yield return null;
+            for (float f = 0; f < startDelay; f += Time.deltaTime) await Task.Yield();
 
             while (ima.color.a < color.a)
             {
                 ima.color += Color.black * (Time.deltaTime * speed);
-                yield return null;
+                await Task.Yield();
             }
             ima.color = color;
-            yield return null;
+            await Task.Yield();
 
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadSceneAsync(sceneName);
 
-            for (float f = 0; f < afterDelay; f += Time.deltaTime) yield return null;
+            for (float f = 0; f < afterDelay; f += Time.deltaTime) await Task.Yield();
 
             Speed = afterSpeed == -1 ? speed : afterSpeed;
 
             Transitioning = false;
         }
-        private IEnumerator IImageTransition(string sceneName, float speed, Texture image, float startDelay, float afterSpeed, float afterDelay)
+        private async void ImageAsync(string sceneName, float speed, Texture image, float startDelay, float afterSpeed, float afterDelay)
         {
             Transitioning = true;
             ima.color = new Color(1, 1, 1, 0);
             ima.texture = image;
 
-            for (float f = 0; f < startDelay; f += Time.deltaTime) yield return null;
+            for (float f = 0; f < startDelay; f += Time.deltaTime) await Task.Yield();
 
             while (ima.color.a < 1)
             {
                 ima.color += Color.black * (Time.deltaTime * speed);
-                yield return null;
+                await Task.Yield();
             }
             ima.color = Color.white;
-            yield return null;
+            await Task.Yield();
 
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadSceneAsync(sceneName);
 
-            for (float f = 0; f < afterDelay; f += Time.deltaTime) yield return null;
+            for (float f = 0; f < afterDelay; f += Time.deltaTime) await Task.Yield();
 
             Speed = afterSpeed == -1 ? speed : afterSpeed;
 
             Transitioning = false;
         }        
-        private IEnumerator IInstantTransition(string sceneName, float delay)
+        private async void InstantAsync(string sceneName, float delay)
         {
             Transitioning = true;
 
-            for (float f = 0; f < delay; f += Time.deltaTime) yield return null;
+            for (float f = 0; f < delay; f += Time.deltaTime) await Task.Yield();
 
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadSceneAsync(sceneName);
 
             Transitioning = false;
         }

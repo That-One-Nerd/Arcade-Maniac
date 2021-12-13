@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Threading.Tasks;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.ObjectModels;
 using UnityEngine;
 
@@ -6,8 +6,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions
 {
     public static class ShakeExtension
     {
-        public static void Shake(this MonoBehaviour mono, ShakeData data) =>
-            mono.StartCoroutine(IShake(mono.gameObject, data));
+        public static void Shake(this MonoBehaviour mono, ShakeData data) => ShakeAsync(mono.gameObject, data);
         public static void Shake(this MonoBehaviour mono, Vector3 intensity, float time, bool slowOverTime) => Shake(mono, new ShakeData
         {
             intensity = intensity,
@@ -21,7 +20,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions
             time = time,
         });
 
-        private static IEnumerator IShake(GameObject obj, ShakeData data)
+        private static async void ShakeAsync(GameObject obj, ShakeData data)
         {
             Vector3 startPos = obj.transform.position;
 
@@ -37,7 +36,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions
                 };
 
                 obj.transform.position = startPos + multiply * (data.slowOverTime ? f / data.time : 1);
-                yield return null;
+                await Task.Yield();
             }
 
             obj.transform.position = startPos;

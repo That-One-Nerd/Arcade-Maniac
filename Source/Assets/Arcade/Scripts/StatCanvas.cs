@@ -22,7 +22,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Arcade
                 !x.IsGenericMethod &&
                 !x.IsAbstract &&
                 x.GetParameters().Length == 1 &&
-                x.GetParameters()[0].ParameterType == typeof(GameObject)).ToArray();
+                x.GetParameters()[0].ParameterType == GetType()).ToArray();
         }
         
         private void Update()

@@ -1,10 +1,11 @@
+using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem.Abstract;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 {
-    public class EnemyRocketSpawner : MonoBehaviour
+    public class ProjectileSpawner : MonoBehaviour
     {
-        public EnemyRocket rocket;
+        public Projectile projectile;
         public PlayerRocket player;
         public float interval;
 
@@ -20,7 +21,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 
                 // replaced the 4 if statements with a single one. you aren't expected to know this, don't worry.
                 // just wanted to make it smaller.
-                GameObject cloned = Instantiate(rocket.gameObject, rand switch
+                GameObject cloned = Instantiate(projectile.gameObject, rand switch
                 {
                     0 => new Vector2(Random.Range(0, 20) - 10, -5),
                     1 => new Vector2(-10, Random.Range(0, 10) - 5),
@@ -29,7 +30,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 
                     _ => Vector2.zero
                 }, Quaternion.Euler(Vector3.zero));
-                cloned.GetComponent<EnemyRocket>().player = player;
+                cloned.GetComponent<Projectile>().player = player;
             }
         }
     }

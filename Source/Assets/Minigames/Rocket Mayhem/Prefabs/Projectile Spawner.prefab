@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4648689608019697903}
   - component: {fileID: 4648689608019697900}
   m_Layer: 0
-  m_Name: Enemy Rocket Spawner
+  m_Name: Projectile Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b8a39151ca356469957695be660cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket: {fileID: 5680849183979807798, guid: a1945dfe511f1f94b9f14a476266d819, type: 3}
+  projectile: {fileID: 0}
   player: {fileID: 0}
   interval: 1

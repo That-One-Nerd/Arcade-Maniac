@@ -5,6 +5,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 {
     public class CameraController : MonoBehaviour
     {
+        public float speed;
+
         private PlayerRocket p;
 
         private void Awake() =>
@@ -17,7 +19,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
                 x = p.transform.position.x,
                 y = p.transform.position.y,
                 z = -10,
-            });
+            }, speed);
         }
     }
 }
