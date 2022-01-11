@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,10 +53,8 @@
     <UnityVersion>2021.1.28f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Start Menu\AnyKeyText.cs" />
+    <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\ProjectileSimple.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\SemisolidPlatform.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Game Interface\PauseButton.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Abstract\Enemy.cs" />
@@ -72,6 +70,7 @@
     <Compile Include="Assets\Arcade\Scripts\Floor.cs" />
     <Compile Include="Assets\Arcade\Scripts\Player.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Coin.cs" />
+    <Compile Include="Assets\Misc\Scripts\Extensions\ContainsAtExtension.cs" />
     <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\ProjectileExploding.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Player.cs" />
     <Compile Include="Assets\Misc\Scripts\Extensions\CombineExtension.cs" />
@@ -82,10 +81,12 @@
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Finish.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Game Interface\CoinCounter.cs" />
     <Compile Include="Assets\Misc\Scripts\Object Models\ShakeData.cs" />
+    <Compile Include="Assets\Misc\Scripts\Extensions\DifferenceExtension.cs" />
     <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\ProjectileSpawner.cs" />
     <Compile Include="Assets\Misc\Scripts\Extensions\InterpolateExtension.cs" />
     <Compile Include="Assets\Minigames\The Average 9-5 Job\Scripts\SceneManager.cs" />
     <Compile Include="Assets\Arcade\Scripts\StatCanvas.cs" />
+    <Compile Include="Assets\Misc\Scripts\Extensions\GetPointAlongExtension.cs" />
     <Compile Include="Assets\Minigames\The Average 9-5 Job\Scripts\Abstract\GameScene.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\HittableBlock.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\ItemHealthBoost.cs" />
@@ -94,16 +95,22 @@
     <Compile Include="Assets\Misc\Scripts\Transition.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Abstract\Item.cs" />
     <Compile Include="Assets\Misc\Scripts\Handlers\PoolHandler.cs" />
+    <Compile Include="Assets\Misc\Scripts\Extensions\IsSimilarExtension.cs" />
     <Compile Include="Assets\Minigames\Rocket Mayhem\Scripts\PlayerRocket.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\CloudPiece.cs" />
+    <Compile Include="Assets\Minigames\Hacker Magic\Scripts\Object Models\MarkupComponent.cs" />
     <Compile Include="Assets\Misc\Scripts\Object Models\GeneralStats.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Spikes.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Game Interface\WorldIndicator.cs" />
+    <Compile Include="Assets\Minigames\Hacker Magic\Scripts\Object Models\MarkupInfo.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\EnemyRolling.cs" />
     <Compile Include="Assets\Misc\Scripts\Extensions\ShakeExtension.cs" />
+    <Compile Include="Assets\Minigames\Hacker Magic\Scripts\SyntaxManager.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\PlayerCamera.cs" />
     <Compile Include="Assets\Minigames\Entity March Dream\Scripts\Bunches\Start Menu\StartMenu.cs" />
     <Compile Include="Assets\Misc\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Minigames\Hacker Magic\Scripts\ScriptExecutor.cs" />
+    <Compile Include="Assets\Minigames\Hacker Magic\Scripts\Object Models\EnvironmentVariable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

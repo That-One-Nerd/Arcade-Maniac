@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5680849183979807796}
   - component: {fileID: 5680849183979807798}
   - component: {fileID: 5680849183979807799}
+  - component: {fileID: 1460912473727098441}
   m_Layer: 0
   m_Name: Projectile Seeking
   m_TagString: Untagged
@@ -97,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0299de7dbc39fd44babf502d6ee53e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 5
-  speed: 2
+  activeTime: 5
+  speed: 1.5
+  speedIncrease: 1
   speedRot: 3
-  sprite: {fileID: 0}
 --- !u!50 &5680849183979807799
 Rigidbody2D:
   serializedVersion: 4
@@ -122,3 +123,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1460912473727098441
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680849183979807787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.041666668}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.75, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16666667, y: 0.6666667}
+  m_EdgeRadius: 0

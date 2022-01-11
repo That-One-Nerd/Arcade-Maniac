@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Minigames/The Average 9-5 Job/Scenes/Main.unity
+- path: Assets/Minigames/Hacker Magic/Scenes/Testing.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

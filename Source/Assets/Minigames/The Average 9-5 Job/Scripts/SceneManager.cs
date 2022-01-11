@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.TheAverage9To5Job.Abstract;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Misc;
 using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions;
 using UnityEngine;
 
@@ -18,6 +19,11 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.TheAverage9To5Job
                 OnSceneChange(p_CurrentScene, value);
                 p_CurrentScene = value;
             }
+        }
+        public int CurrentSceneIndex
+        {
+            get => Array.IndexOf(scenes, CurrentScene);
+            set => CurrentScene = scenes[value];
         }
         public Action<int> OnInput { get; set; } = delegate { };
         public Action<GameScene?, GameScene> OnSceneChange { get; set; } = delegate { };
@@ -54,11 +60,11 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.TheAverage9To5Job
             MethodInfo method = optionMethods.FirstOrDefault(x => x.Name == "Scene" +
                 sceneList.IndexOf(p_CurrentScene) + "Option" + value);
 
-            Debug.Log("Scene" + sceneList.IndexOf(p_CurrentScene) + "Option" + value);
-
-            if (method == default) return;
-
-            Debug.Log("found");
+            if (method == default)
+            {
+                DefaultOption();
+                return;
+            }
 
             method.Invoke(this, null);
         }
@@ -69,18 +75,21 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.TheAverage9To5Job
             string write = (newScene.Title == "" ? "" : newScene.Title + "\n\n\n") + newScene.Text + "\n\n\n";
             for (int i = 0; i < newScene.Options.Length; i++) write += i + " - " + newScene.Options[i] + "\n";
 
-            ren.WriteText(write);
+            ren.WriteText(write, (int)(100 / newScene.TextSpeed), (int)(20 / newScene.TextSpeed));
         }
 
         // Begin option code
 
-        private void Scene0Option0()
-        {
-            Debug.Log("Option 0");
-        }
-        private void Scene0Option1()
-        {
-            Debug.Log("Option 1");
-        }
+        public void DefaultOption() => CurrentSceneIndex++;
+
+        public void Scene0Option1() => Transition.Instance.FadeTransition("Arcade");
+        public void Scene2Option0() => CurrentSceneIndex += 2;
+        public void Scene5Option0() => CurrentSceneIndex += 2;
+        public void Scene6Option0() => CurrentSceneIndex = 0;
+        public void Scene7Option1() => CurrentSceneIndex += 2;
+        public void Scene7Option2() => CurrentSceneIndex += 3;
+        public void Scene8Option0() => CurrentSceneIndex = 7;
+        public void Scene9Option0() => CurrentSceneIndex = 7;
+        public void Scene10Option0() => CurrentSceneIndex = 7;
     }
 }

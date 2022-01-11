@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/Minigames/Rocket Mayhem/Scripts/ProjectileExploding.cs
+    - Assets/Minigames/Rocket Mayhem/Scenes/Testing Game.unity
+    - Assets/Minigames/Rocket Mayhem/Textures/Projectile-Seeking.png
+    - Assets/Minigames/Rocket Mayhem/Textures/Projectile-Seeking.png.meta
     - 
-    m_Values: 0101
-  RevisionSummary: 
+    m_Values: 01010101
+  RevisionSummary: stuff
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0

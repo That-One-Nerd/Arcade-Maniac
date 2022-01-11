@@ -835,11 +835,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes:
-  - Options:
-    - Start Game.
-    - Quit.
+  - Title: 
     Text: The Average 9-5 Job.
-    Title: 
+    TextSpeed: 5
+    Options:
+    - Start game.
+    - Quit.
+  - Title: Introduction
+    Text: You are a buisnessman. You work in a big company skyscraper, on floor 201.
+      In order to get to floor 201, you take the elevator. Taking the stairs would
+      be incredibly impractical at this height, and it hurts your back as well.
+    TextSpeed: 1
+    Options:
+    - Continue...
+  - Title: Introduction (Part 2)
+    Text: Today is like any other. You wake up at 7:00 AM, get ready for your departure
+      at 8:00 AM, and arrive at the building. You step inside the building.
+    TextSpeed: 1
+    Options:
+    - Enter the elevator.
+    - Check your surroundings.
+  - Title: Introduction (Part 2)
+    Text: You look around the lobby. It is similar to a hotel lobby, with a receptionist
+      at a desk nearby, and some sofas for people on break to lounge at. There is
+      not much to do here.
+    TextSpeed: 2
+    Options:
+    - Enter the elevator.
+  - Title: Introduction (Part 3)
+    Text: You step inside the elevator. All is normal. The elevator makes its way
+      up to the 201st floor. It usually takes around less than a minute to climb
+      there, and in this case it did as well.
+    TextSpeed: 1
+    Options:
+    - Continue...
+  - Title: 
+    Text: 'But then, instead of the doors opening, the elevator shutters slightly.
+
+
+
+
+      It
+      then begins to plummet down the shaft, all the way back to the bottom.'
+    TextSpeed: 2
+    Options:
+    - Check elevator surroundings.
+    - Give up.
+  - Title: 
+    Text: 'You accept your deadly fate as the elevator crashes into the bottom of
+      the shaft. The impact is so fast, you are splat on the floor and killed instantly.
+      The top of the elevator then crushes you, ensuring your fate down there.
+
+
+
+      THE
+      END'
+    TextSpeed: 1
+    Options:
+    - Restart.
+  - Title: Elevator Hub
+    Text: You look around the elevator. There is a carpet underneath your feet, and
+      other ordinary elevator items.
+    TextSpeed: 2
+    Options:
+    - Inspect button panel.
+    - Inspect carpet.
+    - Inspect doors.
+  - Title: Elevator Buttons
+    Text: something
+    TextSpeed: 2
+    Options:
+    - Back.
+  - Title: Elevator Carpet
+    Text: something
+    TextSpeed: 2
+    Options:
+    - Back.
+  - Title: Elevator Doors
+    Text: something
+    TextSpeed: 2
+    Options:
+    - Back.
 --- !u!4 &1928783083
 Transform:
   m_ObjectHideFlags: 0

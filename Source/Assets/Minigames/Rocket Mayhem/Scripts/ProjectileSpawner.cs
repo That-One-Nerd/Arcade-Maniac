@@ -1,11 +1,35 @@
 using That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem.Abstract;
+using That_One_Nerd.Unity.Games.ArcadeManiac.Misc.Extensions;
 using UnityEngine;
 
 namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 {
     public class ProjectileSpawner : MonoBehaviour
     {
-        public Projectile projectile;
+        public Projectile[] prefabs;
+
+        private Camera cam;
+        private Rect spawningBounds;
+
+        private void Awake() => cam = FindObjectOfType<Camera>();
+
+        private void Update()
+        {
+            spawningBounds = new Rect
+            {
+                max = cam.ScreenToWorldPoint(new Vector2(cam.scaledPixelWidth, cam.scaledPixelHeight)),
+                min = cam.ScreenToWorldPoint(Vector2.zero),
+            };
+
+            if (Input.GetKeyDown(KeyCode.Space)) SpawnProjectile();
+        }
+
+        public void SpawnProjectile() => SpawnProjectile(prefabs[Random.Range(0, prefabs.Length)]);
+        public void SpawnProjectile(Projectile prefab) =>
+            Instantiate(prefab, spawningBounds.GetPointAlong(Random.Range(0f, 1f)), Quaternion.Euler(Vector3.zero),
+                transform);
+
+        /*public Projectile projectile;
         public PlayerRocket player;
         public float interval;
 
@@ -32,6 +56,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
                 }, Quaternion.Euler(Vector3.zero));
                 cloned.GetComponent<Projectile>().player = player;
             }
-        }
+        }*/
     }
 }

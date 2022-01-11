@@ -15,7 +15,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.TheAverage9To5Job
         }
 
         public void Flush() => txt.text = "";
-        public async void WriteText(string content, int msDelay = 20, int mouseDownDelay = 5)
+        public async void WriteText(string content, int msDelay = 100, int mouseDownDelay = 20)
         {
             for (int i = 0; i < content.Length; i++)
             {

@@ -17,6 +17,8 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
         public float speed;
         public float speedRot;
 
+        internal Collider2D col;
+
         private float active = 0;
         private Camera cam;
         private Rigidbody2D rb;
@@ -25,6 +27,7 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
         private void Awake()
         {
             cam = FindObjectOfType<Camera>();
+            col = FindObjectOfType<Collider2D>();
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
 

@@ -27,7 +27,6 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.TheAverage9To5Job
         {
             int val = int.Parse(value);
 
-            Debug.Log(manager.CurrentScene.Options.Length);
             if (val < 0 || val >= manager.CurrentScene.Options.Length) return;
 
             manager.OnInput(val);

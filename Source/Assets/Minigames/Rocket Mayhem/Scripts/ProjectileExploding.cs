@@ -6,10 +6,17 @@ namespace That_One_Nerd.Unity.Games.ArcadeManiac.Minigames.RocketMayhem
 {
     public class ProjectileExploding : Projectile
     {
-        protected override void Despawn()
+        protected override void Update()
         {
-            Debug.Log("Explosion Moment");
-            base.Despawn();
+            speed -= Time.deltaTime * speedIncrease;
+            base.Update();
+        }
+
+        protected override void MoveIdle() => HitPlayer();
+        protected override void HitPlayer()
+        {
+            Debug.Log("explode");
+            base.HitPlayer();
         }
     }
 }
